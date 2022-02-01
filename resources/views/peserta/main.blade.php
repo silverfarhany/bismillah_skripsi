@@ -197,14 +197,14 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
                                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                             </li>
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="javascript:;" class="menu-link menu-toggle">
+                                <a href="/readtask" class="menu-link menu-toggle">
                                     <i class="menu-icon flaticon2-list-1"></i>
                                     <span class="menu-text">Your Task</span>                                    
                                 </a>                                                                      
                             </li>
                             {{-- menu 2 --}}
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="javascript:;" class="menu-link menu-toggle">
+                                <a href="/readpresensi" class="menu-link menu-toggle">
                                     <i class="menu-icon flaticon2-user"></i>
                                     <span class="menu-text">Your Presences</span>                                    
                                 </a>                                
@@ -226,7 +226,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
                                         </li>
                                         <li class="menu-item menu-item-submenu" aria-haspopup="true"
                                         data-menu-toggle="hover">
-                                        <a href="javascript:;" class="menu-link menu-toggle">
+                                        <a href="/readkeagamaan" class="menu-link menu-toggle">
                                             <i class="menu-bullet menu-bullet-line">
                                                 <span></span>
                                             </i>
@@ -237,7 +237,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
                                     </li>
                                         <li class="menu-item menu-item-submenu" aria-haspopup="true"
                                             data-menu-toggle="hover">
-                                            <a href="javascript:;" class="menu-link menu-toggle">
+                                            <a href="/readkejasmanian" class="menu-link menu-toggle">
                                                 <i class="menu-bullet menu-bullet-line">
                                                     <span></span>
                                                 </i>
@@ -248,7 +248,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
                                         </li>  
                                         <li class="menu-item menu-item-submenu" aria-haspopup="true"
                                         data-menu-toggle="hover">
-                                        <a href="javascript:;" class="menu-link menu-toggle">
+                                        <a href="/readsharingsession" class="menu-link menu-toggle">
                                             <i class="menu-bullet menu-bullet-line">
                                                 <span></span>
                                             </i>
@@ -263,7 +263,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
                                         <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                                     </li>
                                     <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                        <a href="javascript:;" class="menu-link menu-toggle">
+                                        <a href="/final" class="menu-link menu-toggle">
                                             <i class="menu-icon flaticon2-box"></i>
                                             <span class="menu-text">Hasil KP</span>
                                             

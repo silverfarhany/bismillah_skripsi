@@ -205,7 +205,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
                                         </li>
                                         <li class="menu-item menu-item-submenu" aria-haspopup="true"
                                             data-menu-toggle="hover">
-                                            <a href="javascript:;" class="menu-link menu-toggle">
+                                            <a href="/readmember" class="menu-link menu-toggle">
                                                 <i class="menu-bullet menu-bullet-line">
                                                     <span></span>
                                                 </i>
@@ -216,7 +216,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
                                         </li>
                                         <li class="menu-item menu-item-submenu" aria-haspopup="true"
                                             data-menu-toggle="hover">
-                                            <a href="javascript:;" class="menu-link menu-toggle">
+                                            <a href="/readalltask" class="menu-link menu-toggle">
                                                 <i class="menu-bullet menu-bullet-line">
                                                     <span></span>
                                                 </i>
@@ -224,7 +224,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
                                             </a>                                                                                          
                                         </li>
                                         <li class="menu-item" aria-haspopup="true">
-                                            <a href="../../custom/apps/inbox.html" class="menu-link">
+                                            <a href="/readallpresensi" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-line">
                                                     <span></span>
                                                 </i>
@@ -252,7 +252,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
                                         </li>
                                         <li class="menu-item menu-item-submenu" aria-haspopup="true"
                                             data-menu-toggle="hover">
-                                            <a href="javascript:;" class="menu-link menu-toggle">
+                                            <a href="/readallkeagamaan" class="menu-link menu-toggle">
                                                 <i class="menu-bullet menu-bullet-line">
                                                     <span></span>
                                                 </i>
@@ -263,7 +263,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
                                         </li>
                                         <li class="menu-item menu-item-submenu" aria-haspopup="true"
                                             data-menu-toggle="hover">
-                                            <a href="javascript:;" class="menu-link menu-toggle">
+                                            <a href="/readallkejasmanian" class="menu-link menu-toggle">
                                                 <i class="menu-bullet menu-bullet-line">
                                                     <span></span>
                                                 </i>
@@ -271,7 +271,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
                                             </a>                                                                                          
                                         </li>
                                         <li class="menu-item" aria-haspopup="true">
-                                            <a href="../../custom/apps/inbox.html" class="menu-link">
+                                            <a href="/readallsharingsession" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-line">
                                                     <span></span>
                                                 </i>

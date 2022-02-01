@@ -14,5 +14,9 @@ nilai -> id_nilai, id_pembimbing, id_peserta, id_tugas, nilai
 
 sertifikat -> id_sertif, id_peserta, no_sertif, tgl_buat
 
-akun -> id_akun, email, password, role
+akun -> id_akun, name, email, password, role
+
+
+YANG SAMA KAYA DEMONG -> Peserta, pembimbing, divisi
+
 

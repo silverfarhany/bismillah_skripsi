@@ -1,0 +1,10 @@
+PESERTA :
+- tabel kehadiran peserta
+- halamana kegiatan rutin (isinya tabel / record per kegiatan)
+-hasil KP -> isinya nilai Task, KR, dan nilai KP dr pembimbing (+ sertifikat kalo udh lulus)
+
+PEMBIMBING :
+-data diri peserta -> tabel / lebih bagus kalo ada card buat milih periode nya dulu
+-tabel aja
+- card isinya jumlah tugas yg on-going
+
