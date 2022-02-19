@@ -18,7 +18,10 @@
             <!--end::Header-->
             <!--begin::Body-->
             <div class="card-body d-flex align-items-center justify-content-between pt-7 flex-wrap">
-                <a href="#" class="btn btn-sm btn-primary font-weight-bolder px-6">Take</a>
+                 <!-- Button trigger modal-->
+                 <button href="#" class="btn btn-sm btn-primary font-weight-bolder px-6" 
+                 data-toggle="modal" data-target="#take_task">Take</button>
+                 <!--end button trigger-->
             </div>
             <!--end::Body-->
         </div>
@@ -97,7 +100,24 @@
         </div>
         <!--end::Stats Widget 1-->
     
-
+<!-- Modal-->
+<div class="modal fade" id="take_task" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">                
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                You take today's task. Good luck!                                  
+            </div>            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">OK</button>                
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Modal-->
 <div class="modal fade" id="submit_kr" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">

@@ -10,14 +10,15 @@ use App\Http\Controllers\LoginController;
 
 
 
+
 class LoginController extends Controller
 {
     public function login()
     {
-        if (Session::get('roll') == 2){
-            return redirect('home');
+        if(Session::get('roll') == 2){
+            return redirect('/home');
         }elseif(Session::get('roll') == 1){
-            return redirect('/dashboard');
+            return redirect('/homepeserta');
         }else{
             return view('login');
         }
@@ -26,7 +27,7 @@ class LoginController extends Controller
     public function actionlogin(Request $request)
     {
         $login = $request->validate([
-            'email' => 'required|email:dns|exists:Person,email',
+            'email' => 'required|email:dns|exists:Member,email|exist:Mentor,email',
             'password' => 'required',
         ]);
         if (Auth::attempt($login)) {

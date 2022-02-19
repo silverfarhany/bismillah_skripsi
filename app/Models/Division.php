@@ -7,5 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Division extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
+    protected $fillable = ['id','name'];
+    protected $table = 'divisions';
+
+    public function getMember(){
+        return $this->belongsTo(Member::class);
+    }
+
+    public function getMentor(){
+        return $this->belongsTo(Mentor::class);
+    }
 }

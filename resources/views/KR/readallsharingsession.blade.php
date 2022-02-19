@@ -20,8 +20,13 @@
     </div>
     <div class="card-body">
         <!--begin: Datatable-->
-        <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
-            INI NANTI ADA BUAT MILIH TANGGAL GITU..
+        <table class="table table-separate table-head-custom table-checkable" id="modalofdate">
+            <div class="form-group row">                
+                <div class="col-lg-4 col-md-9 col-sm-12">
+                 <a href="" class="btn btn-light-primary font-weight-bold" data-toggle="modal" data-target="#modalofdate">Select Date</a>
+                </div>
+               </div>
+              </div>
             <thead>
                 <tr>
                     <th>#</th>
@@ -76,7 +81,32 @@
 
 
 <!-- Modal-->
-<div class="modal fade" id="exampleModalCenter" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">        
+<div class="modal fade" id="modalofdate" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="document"> 
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalofdate">Select the range of date</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">                
+                <div class="form-group row">                    
+                    <div class="col-lg-9 col-md-9 col-sm-12">
+                     <div class='input-group' id='kt_daterangepicker_2'>
+                      <input type='text' class="form-control" readonly  placeholder="Select date range"/>
+                      <div class="input-group-append">
+                       <span class="input-group-text"><i class="la la-calendar-check-o"></i></span>
+                      </div>
+                     </div>
+                    </div>
+                   </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary font-weight-bold">Submit</button>
+            </div>
+        </div> 
     </div>
-</div>
+</div>      

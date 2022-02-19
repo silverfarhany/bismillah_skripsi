@@ -169,17 +169,25 @@
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <div class="modal-body">                
+            <div class="modal-body">   
                 <div class="form-group">
-                    <label for="exampleTextarea">Name of Task</label>
+                    <label>Mentor's Name</label>
+                    <select class="form-control form-control-solid" name="mentor_id">
+                      {{-- @foreach ($persons as $person) --}}
+                      <option value=""></option>
+                      {{-- @endforeach --}}
+                    </select>
+                   </div>             
+                <div class="form-group">
+                    <label for="name" name="name">Name of Task</label>
                     <input class="form-control"></input>
                 </div> 
                 <div class="form-group">
-                    <label for="exampleTextarea">Description of Task</label>
+                    <label for="description" name="description">Description of Task</label>
                     <textarea class="form-control" rows="3"></textarea>
                 </div> 
                 <div class="form-group">
-                    <label for="example-date-input" class="col-2 col-form-label">Deadline</label>                    
+                    <label for="deadline" name="deadline" class="col-2 col-form-label">Deadline</label>                    
                      <input class="form-control" type="date" value="2011-08-19" id="example-date-input"/>                    
                 </div>   
             </div>       

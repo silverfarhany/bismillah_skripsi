@@ -282,7 +282,56 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
                                     
                                 </div>
                             </li>
-                            {{-- menu 3 --}}                            
+                            {{-- menu 4 --}}                            
+                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                <a href="javascript:;" class="menu-link menu-toggle">
+                                    <i class="menu-icon flaticon2-plus"></i>
+                                    <span class="menu-text">Penambahan</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="menu-submenu">
+                                    <i class="menu-arrow"></i>
+                                    <ul class="menu-subnav">
+                                        <li class="menu-item menu-item-submenu" aria-haspopup="true"
+                                        data-menu-toggle="hover">
+                                        <a href="/createdivision" class="menu-link menu-toggle">
+                                            <i class="menu-bullet menu-bullet-line">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Add Divisi</span>
+                                            <span class="menu-label">                                                    
+                                            </span>                                            
+                                        </a>                                            
+                                    </li>   
+                                        <li class="menu-item menu-item-parent" aria-haspopup="true">
+                                            <span class="menu-link">
+                                                <span class="menu-text">Masukkan Nilai</span>
+                                            </span>
+                                        </li>
+                                        <li class="menu-item menu-item-submenu" aria-haspopup="true"
+                                        data-menu-toggle="hover">
+                                        <a href="/createmember" class="menu-link menu-toggle">
+                                            <i class="menu-bullet menu-bullet-line">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">Add Peserta KP</span>
+                                            <span class="menu-label">                                                    
+                                            </span>                                            
+                                        </a>                                            
+                                    </li>
+                                        <li class="menu-item menu-item-submenu" aria-haspopup="true"
+                                            data-menu-toggle="hover">
+                                            <a href="/creatementor" class="menu-link menu-toggle">
+                                                <i class="menu-bullet menu-bullet-line">
+                                                    <span></span>
+                                                </i>
+                                                <span class="menu-text">Add Pembimbing</span>
+                                                <span class="menu-label">                                                    
+                                                </span>                                            
+                                            </a>                                            
+                                        </li>                                                                                
+                                    </ul>  
+                                    {{-- menu 3 --}}                            
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="javascript:;" class="menu-link menu-toggle">
                                     <i class="menu-icon flaticon2-list-1"></i>
@@ -299,7 +348,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
                                         </li>
                                         <li class="menu-item menu-item-submenu" aria-haspopup="true"
                                         data-menu-toggle="hover">
-                                        <a href="javascript:;" class="menu-link menu-toggle">
+                                        <a href="/createscore" class="menu-link menu-toggle">
                                             <i class="menu-bullet menu-bullet-line">
                                                 <span></span>
                                             </i>

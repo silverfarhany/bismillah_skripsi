@@ -17,6 +17,7 @@ class CreateTasksTable extends Migration
             $table->id();
             $table->foreignId('mentors_id')->references('id')->on('mentors');
             $table->foreignId('members_id')->references('id')->on('members');
+            $table->string('name');
             $table->date('deadline');
             $table->string('description');
             $table->tinyInteger('status');
