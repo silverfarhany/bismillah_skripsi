@@ -7,5 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
+    protected $fillable = ['id','mentors_id','members_id','name','deadline','description','status'];
+    protected $table = 'tasks';
+
+    public function getMember(){
+        return $this->hasOne(Member::class);
+    }
+
+    public function getMentor(){
+        return $this->hasOne(Mentor::class);
+    }
 }

@@ -95,61 +95,28 @@
         <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Task</th>
-                    <th>Description</th>
-                    <th>Name of member</th>
-                    <th>Deadline</th>
-                    <th>Status</th>                    
-                    <th>Actions</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Task</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Name of member</th>
+                    <th scope="col">Deadline</th>
+                    <th scope="col">Status</th>                    
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
+                <?php $no = 1 ?>
+            @foreach($tasks as $task)
                 <tr>
                     <td>1</td>
-                    <td>Tugas 1 </td>
-                    <td>Hayes Boule</td>
-                    <td>Casper-Kerluke</td>
-                    <td>5</td>
-                    <td>1</td>
+                    <td>{{ $task->name }}</td>
+                    <td>{{ $task->description }}</td>
+                    <td> {{ $members->find($task->members_id)->name }}</td>
+                    <td>{{ $task->deadline }}</td>
+                    <td>{{ $task->status }}</td>
                     <td nowrap="nowrap"></td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>tugas 2</td>
-                    <td>Humbert Bresnen</td>
-                    <td>Hodkiewicz and Sons</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td nowrap="nowrap"></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>tugas 3</td>
-                    <td>Jareb Labro</td>
-                    <td>Kuhlman Inc</td>
-                    <td>6</td>
-                    <td>2</td>
-                    <td nowrap="nowrap"></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>ktosspell3</td>
-                    <td>Krishnah Tosspell</td>
-                    <td>Prosacco-Kessler</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td nowrap="nowrap"></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>dkernan4</td>
-                    <td>Dale Kernan</td>
-                    <td>Bernier and Sons</td>
-                    <td>5</td>
-                    <td>2</td>
-                    <td nowrap="nowrap"></td>
-                </tr>          
+                @endforeach                
             </tbody>
         </table>
         <!--end: Datatable-->
@@ -163,30 +130,44 @@
 <div class="modal fade" id="exampleModalCenter" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
+
+            <form method="post" action ="/submittask"  id="addTask">
+                @csrf
             <div class="modal-header">
                 <h5 class="modal-title" id="submit_presence">Create some Task</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <div class="modal-body">                
+            <div class="modal-body">                                       
+                <div class="form-group">
+                    <label for="exampleTextarea">Member's Name</label>
+                    {{ csrf_field() }}
+                    <select class="form-control" type="search" placeholder="Choose Mentor's Name" name="members_id" id="members_id">
+                        @foreach ($members as $member)
+                    <option value="{{ $member->id }}">{{ $member->name }}</option>
+                        @endforeach
+                    </select>
+                </div>             
                 <div class="form-group">
                     <label for="exampleTextarea">Name of Task</label>
-                    <input class="form-control"></input>
+                    {{ csrf_field() }}
+                    <input class="form-control" name="name" id="name"></input>
                 </div> 
                 <div class="form-group">
                     <label for="exampleTextarea">Description of Task</label>
-                    <textarea class="form-control" rows="3"></textarea>
+                    <textarea class="form-control" rows="3" name="description" id="description"></textarea>
                 </div> 
                 <div class="form-group">
                     <label for="example-date-input" class="col-2 col-form-label">Deadline</label>                    
-                     <input class="form-control" type="date" value="2011-08-19" id="example-date-input"/>                    
-                </div>   
+                     <input class="form-control" type="date" value="2011-08-19" id="example-date-input" name="deadline" id="deadline"/>                    
+                </div>                   
             </div>       
             <div class="modal-footer">
                 <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary font-weight-bold">Save Task</button>
+                <button type="submit" id="addTask" class="btn btn-primary font-weight-bold">Save Task</button>
             </div>
+        </form>
         </div>
     </div>
     </div>

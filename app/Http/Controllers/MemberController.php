@@ -12,11 +12,20 @@ class MemberController extends Controller
 
     public function index(){
        
-        $division = Division::select('id','name')->get();
-        $mentors = Mentor::select('id','name')->get();
         $members = Member::all();
+        $division = Division::select('id','name')->get();
+        $mentors = Mentor::select('id','name')->get();        
         return view('peserta.create',compact('division','mentors','members'));
     }
+
+    public function read(){
+       
+        $members = Member::all();
+        $division = Division::select('id','name')->get();
+        $mentors = Mentor::select('id','name')->get();        
+        return view('peserta.read',compact('division','mentors','members'));
+    }
+
     
     
     public function storeDataPost(Request $request)
@@ -64,15 +73,15 @@ class MemberController extends Controller
         }  
 
         public function edit($id) {  
-            $member = Member::findOrFail($id); 
+            $members = Member::findOrFail($id); 
             $divisions = Division::select('id','name')->post();
             $mentor = Mentor::select('id','name')->post();       
             return view('peserta.edit',[
-                'members' => $member,
+                'members' => $members,
             ]);
         }
     
-        public function update(Request $request, Member $member)
+        public function update(Request $request, Member $members)
         {
             $request->validate([          
                 'mentors_id'=>'required',
@@ -106,7 +115,7 @@ class MemberController extends Controller
             ]);
     
             $input = $request->all();
-            $member->update($input);
+            $members->update($input);
             return redirect('/createmember');
     
         }

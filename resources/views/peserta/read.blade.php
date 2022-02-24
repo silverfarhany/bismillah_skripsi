@@ -1,5 +1,12 @@
 @extends('pembimbing.main')
 @section('content')
+
+<div class="card card-custom">
+    <div class="card-header">
+    <h3 class="card-title">
+    Data Peserta Kerja Praktik
+    </h3>
+</div>
 <div class="card-body">
     <!--begin: Datatable-->
     @if ($members->count() > 0)
@@ -130,4 +137,3 @@
 </div>
 </div>
 
-@endsection

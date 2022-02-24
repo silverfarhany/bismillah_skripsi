@@ -1,12 +1,14 @@
 <?php
 
+use App\Models\Member;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\DivisionController;
-use App\Models\Member;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,11 +31,12 @@ Route::get('/home', function() {return view('pembimbing.index');});
 Route::get('/creatementor',[MentorController::class, 'index'])->name('creatementor');
 Route::post('/submitmentor',[MentorController::class, 'storeDataPost'])->name('storementor');
 
-Route::get('/createscore', function () {return view('score.create');});
+Route::get('/createscore', [ScoreController::class, 'index'])->name('index');
+// Route::get('/createscore', function () {return view('score.create');});
 
 Route::get('/homepeserta', function () {return view('peserta.index');});
 Route::get('/final', function () {return view('peserta.final');});
-Route::get('/readmember', function () {return view('peserta.read');});
+Route::get('/readmember', [MemberController::class, 'read']);
 Route::get('/createmember', [MemberController::class,'index']);
 Route::post('/submitmember', [MemberController::class,'storeDataPost'])->name('submitmember');
 Route::get('/editMember/{id}', [MemberController::class, 'edit']);
@@ -45,9 +48,11 @@ Route::get('/deleteDivision/{id}', [DivisionController::class, 'delete'])->name(
 Route::get('/editDivision/{id}', [DivisionController::class, 'edit']);
 Route::post('/editDivision', [DivisionController::class, 'update'])->name('editDivision');
 
+Route::get('/createtask', [TaskController::class, 'index'])->name('createtask');
+Route::post('/submittask', [TaskController::class, 'CreateTask'])->name('createtask');
+Route::get('/readalltask', [TaskController::class, 'index'])->name('index');
 
 Route::get('/readtask', function () {return view('task.read');});
-Route::get('/readalltask', function () {return view('task.readall');});
 
 Route::get('/readpresensi', function () {return view('presensi.read');});
 Route::get('/readallpresensi', function () {return view('presensi.readall');});

@@ -6,40 +6,45 @@
      <h3 class="card-title">
       Input Score
      </h3>
-    </div>
-    <!--begin::Form-->
-    <form>
+    </div>    
+    <form method="post" action ="/submitscore" enctype="multipart/form-data" id="addScore">
      <div class="card-body">
-      <div class="form-group mb-8">
-       {{-- <div class="alert alert-custom alert-default" role="alert">
-        <div class="alert-icon"><i class="flaticon-warning text-primary"></i></div>
-        <div class="alert-text">
-         Here are examples of <code>.form-control</code> applied to each textual HTML5 input type:
-        </div>
-       </div>
-      </div> --}}
+      <div class="form-group mb-8"> 
       <div class="form-group row">
+        {{ csrf_field() }}
        <label  class="col-2 col-form-label">Division</label>
        <div class="col-10">
-        <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"/>
+        <select class="form-control" type="search" placeholder="Choose Division's Name" name="divisions_id" id="divisions_id">
+            @foreach ($divisions as $division)
+        <option value="{{ $division->id }}">{{ $division->name }}</option>
+            @endforeach
+        </select>
        </div>
       </div>
       <div class="form-group row">
        <label for="example-search-input" class="col-2 col-form-label">Name</label>
        <div class="col-10">
-        <input class="form-control" type="search" value="How do I shoot web" id="example-search-input"/>
+        <select class="form-control" type="search" placeholder="Choose Member's Name" name="members_id" id="members_id">
+            @foreach ($members as $member)
+        <option value="{{ $member->id }}">{{ $member->name }}</option>
+            @endforeach
+        </select>
        </div>
       </div>
       <div class="form-group row">
        <label for="example-email-input" class="col-2 col-form-label">Task</label>
        <div class="col-10">
-        <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input"/>
+        <select class="form-control" type="search" placeholder="Choose Task" name="tasks_id" id="tasks_id">
+            @foreach ($tasks as $task)
+        <option value="{{ $task->id }}">{{ $task->name }}</option>
+            @endforeach
+        </select>
        </div>
       </div>
       <div class="form-group row">
        <label for="example-url-input" class="col-2 col-form-label">Score</label>
        <div class="col-10">
-        <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input"/>
+        <input class="form-control" type="number" placeholder="input score" id="score" min="0" max="100"/>
        </div>
       </div>      
      <div class="card-footer">
