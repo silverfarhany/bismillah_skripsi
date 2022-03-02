@@ -32,6 +32,11 @@ Route::get('/creatementor',[MentorController::class, 'index'])->name('createment
 Route::post('/submitmentor',[MentorController::class, 'storeDataPost'])->name('storementor');
 
 Route::get('/createscore', [ScoreController::class, 'index'])->name('index');
+Route::post('/submitscore', [ScoreController::class, 'CreateScore'])->name('createscore');
+Route::get('/readscore', [ScoreController::class, 'read'])->name('readscore');
+Route::get('/deleteScore/{id}', [ScoreController::class, 'delete'])->name('deleteScore');
+Route::get('/editScore/{id}', [ScoreController::class, 'edit']);
+Route::post('/editScore', [ScoreController::class, 'update'])->name('editScore');
 // Route::get('/createscore', function () {return view('score.create');});
 
 Route::get('/homepeserta', function () {return view('peserta.index');});

@@ -18,4 +18,8 @@ class Task extends Model
     public function getMentor(){
         return $this->hasOne(Mentor::class);
     }
+
+    public function getPoint(){
+        return $this->belongsTo(Point::class);
+    }
 }

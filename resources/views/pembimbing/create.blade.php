@@ -60,5 +60,57 @@
      </div>
     </form>
    </div>
-
+<br></br>
+<!--begin::Card-->
+<div class="card card-custom">
+  <div class="card-header flex-wrap py-5">
+      <div class="card-title">
+          <h3 class="card-label">Data Pembimbing KP 
+          <div class="text-muted pt-2 font-size-sm">all data Pembimbing</div></h3>
+      </div>
+      <div class="card-toolbar">
+          <!--begin::Dropdown-->
+          <div class="dropdown dropdown-inline mr-2">                               
+              </div>
+              <!--end::Dropdown Menu-->
+          </div>
+          <!--end::Dropdown-->          
+  </div>
+  <div class="card-body">
+      <!--begin: Datatable-->
+      @if ($mentors->count() > 0)
+      <table class="table table-separate table-head-custom table-checkable" id="kt_datatable"> 
+          <thead>
+              <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Divisi</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th> 
+                  <th scope="col">Telephone</th>                                                                                                            
+              </tr>
+          </thead>
+          <tbody>
+              <?php $no = 1 ?>
+              @foreach($mentors as $mentor)
+              <tr>
+                  <td scope="row">{{ $no++ }}</td>
+                  <td>{{ $division->find($mentor->divisions_id)->name }}</td>
+                  <td>{{ $mentor->name }} </td> 
+                  <td>{{ $mentor->email }} </td>  
+                  <td>{{ $mentor->phone }} </td>  
+                  <td>                      
+                      <a class="far fa-edit icon-md text-warning" href="/editMember"> </a>                     
+                  </td>                                           
+                  <td>
+                    <a class="far fa-trash-alt icon-md text-danger" href="/deleteMember"></a>                      
+                  </td>
+              </tr>
+              @endforeach
+          </tbody>
+      </table>
+      @endif
+      <!--end: Datatable-->
+  </div>
+</div>
+<!--end::Card-->
 @endsection

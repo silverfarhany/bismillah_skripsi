@@ -7,5 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Point extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
+    protected $fillable = ['id','mentors_id','members_id','tasks_id','point'];
+    protected $table = 'points';
+
+    public function getMember(){
+        return $this->hasOne(Member::class);
+    }
+
+    public function getMentor(){
+        return $this->hasOne(Mentor::class);
+    }
+
+    public function getTask(){
+        return $this->hasOne(Task::class);
+    }
 }

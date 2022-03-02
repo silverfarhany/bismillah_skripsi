@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mentor;
 use App\Models\Division;
+use App\Models\Member;
 use Illuminate\Http\Request;
 
 class MentorController extends Controller
@@ -11,7 +12,9 @@ class MentorController extends Controller
     public function index(){
        
         $division = Division::select('id','name')->get();
-        return view('pembimbing.create',compact('division'));
+        $mentors = Mentor::all();
+        $members = Member::select('id','name')->get();
+        return view('pembimbing.create',compact('division','mentors','members'));
     }
 
     public function storeDataPost(Request $request)

@@ -74,10 +74,12 @@ class MemberController extends Controller
 
         public function edit($id) {  
             $members = Member::findOrFail($id); 
-            $divisions = Division::select('id','name')->post();
-            $mentor = Mentor::select('id','name')->post();       
+            $divisions = Division::select('id','name')->get();
+            $mentor = Mentor::select('id','name')->get();       
             return view('peserta.edit',[
                 'members' => $members,
+                'divisions' => $divisions,
+                'mentor' => $mentor
             ]);
         }
     

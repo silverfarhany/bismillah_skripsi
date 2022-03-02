@@ -1,0 +1,16 @@
+closest task:
+- login & registrasi
+- fungsi edit member
+- rud data pembimbing
+- rud data tugas
+
+ALL TASK :
+- CRUD data presensi
+- CRUD data KR
+- Sertifikat peserta
+- dashboard
+- fungsi search di header
+- notifikasi 
+- profile
+- edit profile
+- logout

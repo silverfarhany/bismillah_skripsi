@@ -4,36 +4,37 @@
 <div class="card card-custom">
     <div class="card-header">
     <h3 class="card-title">
-    Data Peserta Kerja Praktik
+    Data Nilai Seluruh Peserta Kerja Praktik
     </h3>
 </div>
 <div class="card-body">
     <!--begin: Datatable-->
-    @if ($members->count() > 0)
+    @if ($points->count() > 0)
     <table class="table table-separate table-head-custom table-checkable" id="kt_datatable"> 
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">ID Member</th>
-                <th scope="col">Name</th>
-                <th scope="col">Mentor</th> 
-                <th scope="col">Division</th>                                                                                                            
+                <th scope="col">Nama Peserta</th>
+                <th scope="col">Nama Pembimbing</th>
+                <th scope="col">Nama Tugas</th> 
+                <th scope="col">Poin / Score</th>                                                                                                            
             </tr>
         </thead>
         <tbody>
             <?php $no = 1 ?>
-            @foreach($members as $member)
+            @foreach($points as $point)
             <tr>
-                <td scope="row">{{ $no++ }}</td>
-                <td>{{ $member->id }}</td>
-                <td>{{ $member->name }}</td> 
-                <td>{{ $mentors->find($member->mentors_id)->name }}</td>  
-                <td>{{ $division->find($member->divisions_id)->name }}</td>  
+                <td scope="row">{{ $no++ }}</td>                
+                <td>{{ $members->find($point->members_id)->name }}</td> 
+                <td>{{ $mentors->find($point->mentors_id)->name }}</td>  
+                <td>{{ $tasks->find($point->tasks_id)->name }}</td>
+                <td>{{ $point->point }}</td>
+                <td>                    
+                    <a class="far fa-edit icon-md text-warning" href="editScore/{{ $point->id }}"> </a>                    
+                </td> 
                 <td>
-                    <i class="far fa-eye icon-md text-success" href="#" data-toggle="modal" data-target="#detail_member"></i>                         
-                    <a class="far fa-edit icon-md text-warning" href="editMember/{{ $member->id }}"> </a>
-                                          
-                </td>                                           
+                    <a class="far fa-trash-alt icon-md text-danger" href="deleteScore/{{ $point->id }}"> </a> 
+                </td>                                          
             </tr>
             @endforeach
         </tbody>
@@ -45,7 +46,7 @@
 <!--end::Card-->
 @endsection
 
-<!-- Modal-->
+{{-- <!-- Modal-->
 <div class="modal fade" id="detail_member" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -135,5 +136,5 @@
         </div>
     </div>
 </div>
-</div>
+</div> --}}
 
