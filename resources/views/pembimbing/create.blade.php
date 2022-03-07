@@ -99,10 +99,10 @@
                   <td>{{ $mentor->email }} </td>  
                   <td>{{ $mentor->phone }} </td>  
                   <td>                      
-                      <a class="far fa-edit icon-md text-warning" href="/editMember"> </a>                     
+                      <a class="far fa-edit icon-md text-warning" href="editMentor/{{ $mentor->id }}"> </a>                     
                   </td>                                           
                   <td>
-                    <a class="far fa-trash-alt icon-md text-danger" href="/deleteMember"></a>                      
+                    <a class="far fa-trash-alt icon-md text-danger" href="deleteMentor/{{ $mentor->id }}"></a>                      
                   </td>
               </tr>
               @endforeach

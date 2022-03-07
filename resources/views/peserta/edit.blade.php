@@ -25,8 +25,7 @@
        <div class="col-10">
         {{ csrf_field() }}
         <select class="form-control" type="search" placeholder="Choose Mentor's Name" name="mentor_id" id="mentor_id">
-          @foreach ($mentor as $mentors)
-          {{-- {{ dd($mentors->find($members->mentors_id)->id) }} --}}
+          @foreach ($mentor as $mentors)          
       <option {{ ($mentors->id == $members->mentors_id)?'selected':'' }} value="{{ $mentors->id }}">{{ $mentors->name }}</option>
           @endforeach
       </select>
@@ -117,7 +116,7 @@
        <div class="col-2">
        </div>
        <div class="col-10">
-        <button type="submit" id="addMember" class="btn btn-success mr-2">Update Member</button>
+        <button type="submit" id="editMember" class="btn btn-success mr-2">Update Member</button>
         <button type="reset" class="btn btn-secondary">Cancel</button>
        </div>
       </div>

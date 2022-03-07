@@ -1,14 +1,17 @@
 <?php
+// nouvos
 
 use App\Models\Member;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\DivisionController;
+use App\Models\Mentor;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,15 +24,22 @@ use App\Http\Controllers\DivisionController;
 |
 */
 
-// Route::get('/', [LoginController::class, 'login'])->name('login');
-// Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
-// Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('auth');
-// Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
-Route::get('/', function() {return view('login');});
+Route::get('/', [LoginController::class, 'login'])->name('login');
+Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
+Route::get('/regis', [RegisController::class, 'regis'])->name('regis');
+Route::post('actionregis', [RegisController::class, 'actionregis'])->name('actionregis');
+Route::get('/home', [HomeController::class, 'home'])->name('home')->middleware('auth');
+Route::get('/homepeserta', [HomeController::class, 'home'])->name('home')->middleware('auth');
+Route::get('/logout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
+//Route::get('/', function() {return view('login');});
 
-Route::get('/home', function() {return view('pembimbing.index');});
+//Route::get('/home', function() {return view('pembimbing.index');});
+
 Route::get('/creatementor',[MentorController::class, 'index'])->name('creatementor');
 Route::post('/submitmentor',[MentorController::class, 'storeDataPost'])->name('storementor');
+Route::get('/deleteMentor/{id}', [MentorController::class, 'delete'])->name('deleteMentor');
+Route::get('/editMentor/{id}', [MentorController::class, 'edit']);
+Route::post('/editMentor', [MentorController::class, 'update'])->name('editMentor');
 
 Route::get('/createscore', [ScoreController::class, 'index'])->name('index');
 Route::post('/submitscore', [ScoreController::class, 'CreateScore'])->name('createscore');
@@ -56,6 +66,9 @@ Route::post('/editDivision', [DivisionController::class, 'update'])->name('editD
 Route::get('/createtask', [TaskController::class, 'index'])->name('createtask');
 Route::post('/submittask', [TaskController::class, 'CreateTask'])->name('createtask');
 Route::get('/readalltask', [TaskController::class, 'index'])->name('index');
+Route::get('/deleteTask/{id}', [TaskController::class, 'delete'])->name('deleteTask');
+Route::get('/editTask/{id}', [TaskController::class, 'edit']);
+Route::post('/editTask', [TaskController::class, 'update'])->name('editTask');
 
 Route::get('/readtask', function () {return view('task.read');});
 

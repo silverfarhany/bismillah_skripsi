@@ -114,7 +114,9 @@
                     <td> {{ $members->find($task->members_id)->name }}</td>
                     <td>{{ $task->deadline }}</td>
                     <td>{{ $task->status }}</td>
-                    <td nowrap="nowrap"></td>
+                    <td> <a class="far fa-edit icon-md text-warning" href="editTask/{{ $task->id }}"> </a>
+                     <a class="far fa-trash-alt icon-md text-danger" href="deleteTask/{{ $task->id }}"> </a> 
+                    </td>
                 </tr>
                 @endforeach                
             </tbody>

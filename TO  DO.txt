@@ -1,16 +1,20 @@
 closest task:
-- login & registrasi
+- login <<< Done
+- registrasi <<<< Done
 - fungsi edit member
-- rud data pembimbing
-- rud data tugas
+- update delete data pembimbing
+- update data tugas
+- read data tugas per-member
 
 ALL TASK :
 - CRUD data presensi
 - CRUD data KR
-- Sertifikat peserta
+- Sertifikat peserta <<<  Make the certificate template first, its maybe hard to make right position for the name
 - dashboard
-- fungsi search di header
-- notifikasi 
+- fungsi search di header <<< Jquery
+- notifikasi <<<< https://laravel.com/docs/9.x/broadcasting#client-pusher-channels
 - profile
-- edit profile
-- logout
+- edit profile <<< https://laravel.com/docs/9.x/filesystem#file-uploads (For Profile Photo)
+- logout <<< Done, you just need to make a button.
+
+YCDT

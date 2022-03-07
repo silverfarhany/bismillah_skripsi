@@ -100,25 +100,38 @@ class MemberController extends Controller
                 'internship_letter'=>'required'                                       
             ]);      
     
-            $validator = Validator::make($request->all(), [
-                'name' => $request->name,
-                'mentors_id'=>$request->mentors_id,
-                'divisions_id'=>$request->divisions_id,
-                'start'=>$request->start,
-                'end'=>$request->end,
-                'name'=>$request->name,
-                'nikp'=>$request->nikp,
-                'univ'=>$request->univ,
-                'email'=>$request->email,
-                'description'=>$request->description,
-                'phone'=>$request->phone,
-                'cv'=>$request->cv,
-                'internship_letter'=>$request->internship_letter             
-            ]);
+         
+                $name = $request->name;
+                $mentors_id =$request->mentors_id;
+                $divisions_id = $request->divisions_id;
+                $start = $request->start;
+                $end = $request->end;                
+                $nikp = $request->nikp;
+                $univ= $request->univ;
+                $email = $request->email;
+                $description = $request->description;
+                $phone = $request->phone;
+                $cv = $request->cv;
+                $internship_letter = $request->internship_letter;            
+            
     
-            $input = $request->all();
-            $members->update($input);
-            return redirect('/createmember');
+            $updateMember = [
+                'name' => $name,
+                'mentors_id' => $mentors_id,
+                'divisions_id' => $divisions_id,
+                'start' => $start,
+                'end' => $end,
+                'nikp' => $nikp,
+                'univ' => $univ,
+                'email' => $email,
+                'description' => $description,
+                'phone' => $phone,
+                'cv' => $cv,
+                'internship_letter' => $internship_letter
+            ];
+            
+            Member::where('id',$request->id_member)->update($updateMember);   
+            return redirect('/readmember');
     
         }
 }

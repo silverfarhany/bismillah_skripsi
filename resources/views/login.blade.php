@@ -73,7 +73,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
 							<!--begin::Signin-->
 							<div class="login-form login-signin">
 								<!--begin::Form-->
-								<form action="/login" method="post" class="form w-xxl-550px rounded-lg p-20" novalidate="novalidate">
+								<form action="/actionlogin" method="post" class="form w-xxl-550px rounded-lg p-20" novalidate="novalidate">
 									@csrf
 									<!--begin::Title-->
 									<div class="pb-13 pt-lg-0 pt-5">
@@ -154,8 +154,8 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
 				<div class="login-footer py-10 flex-column-auto">
 					<div class="container d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between">
 						<div class="font-size-h6 font-weight-bolder order-2 order-md-1 py-2 py-md-0">
-							<span class="text-muted font-weight-bold mr-2">2021©</span>
-							<a href="https://keenthemes.com/keen" target="_blank" class="text-dark-50 text-hover-primary">Silverfarhany</a>
+							<span class="text-muted font-weight-bold mr-2">2022</span>
+							<a href="https://keenthemes.com/keen" target="_blank" class="text-dark-50 text-hover-primary">Silverfarhanny</a>
 						</div>
 						<div class="font-size-h5 font-weight-bolder order-1 order-md-2 py-2 py-md-0">
 							<a href="#" class="text-primary">Terms</a>

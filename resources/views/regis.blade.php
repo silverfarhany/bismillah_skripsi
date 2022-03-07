@@ -73,7 +73,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
 							<!--begin::Signin-->
 							<div class="login-form login-signin">
 								<!--begin::Form-->
-								<form action="/regis" method="post" class="form w-xxl-550px rounded-lg p-20" novalidate="novalidate" id="kt_login_signup_form">
+								<form action="/actionregis" method="post" class="form w-xxl-550px rounded-lg p-20" novalidate="novalidate" id="kt_login_signup_form">
                                 @csrf
 									<!--begin::Title-->
 									<div class="pb-13 pt-lg-0 pt-5">
@@ -101,6 +101,11 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
 									<div class="form-group">
 										<input class="form-control form-control-solid h-auto p-6 rounded-lg font-size-h6  @error('email') is-invalid @enderror" type="email" placeholder="Email" name="email" autocomplete="off" />
 									</div>
+									@if(session()->has('khususEmail'))
+									<div class="alert alert-danger alert-dismissible fade show" role="alert">
+										{{ session('khususEmail') }}
+									</div>
+									@endif
 									@error('email')
 									<div class="alert alert-danger">
 										{{ $message }}
@@ -120,13 +125,8 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
 									<!--end::Form group-->
 									<!--begin::Form group-->
 									<div class="form-group">
-										<input class="form-control form-control-solid h-auto p-6 rounded-lg font-size-h6  @error('cpassword') is-invalid @enderror" type="password" placeholder="Confirm password" name="cpassword" autocomplete="off" />
+										<input class="form-control form-control-solid h-auto p-6 rounded-lg font-size-h6  @error('cpassword') is-invalid @enderror" type="password" placeholder="Confirm password" name="password_confirmation" autocomplete="off" />
 									</div>
-									@error('cpassword')
-									<div class="alert alert-danger">
-										{{ $message }}
-									</div>
-									@enderror
 									<!--end::Form group-->
 									<!--begin::Form group-->
 									<div class="form-group">
@@ -157,7 +157,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
 				<div class="login-footer py-10 flex-column-auto">
 					<div class="container d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-md-between">
 						<div class="font-size-h6 font-weight-bolder order-2 order-md-1 py-2 py-md-0">
-							<span class="text-muted font-weight-bold mr-2">2021©</span>
+							<span class="text-muted font-weight-bold mr-2">2022©</span>
 							<a href="https://keenthemes.com/keen" target="_blank" class="text-dark-50 text-hover-primary">Silverfarhany</a>
 						</div>
 						<div class="font-size-h5 font-weight-bolder order-1 order-md-2 py-2 py-md-0">

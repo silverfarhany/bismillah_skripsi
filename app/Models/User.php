@@ -19,9 +19,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'member_id',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -42,4 +42,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //Disable timestap
+    public $timestamps = false;
 }
+
+
+
+
+
+
+//Alhamdulillah jaza killahu khoiro for always need me, even it just a little thing
