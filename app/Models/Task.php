@@ -21,5 +21,5 @@ class Task extends Model
 
     public function getPoint(){
         return $this->belongsTo(Point::class);
-    }
+    }    
 }

@@ -25,20 +25,18 @@ class TaskController extends Controller
             'deadline' => 'required',
             'description' => 'required',                                   
         ]);
-        $mentor_id = Member::where('id',$request->members_id)->select('mentors_id')->first();
-        dd($mentor_id);
-        $request->session()->put('id_mentor', $mentor_id->id);       
-
+        //$mentor_id = Member::where('id',$request->members_id)->select('mentors_id')->first(); // << hasil disini
+        
         $name = $request->name;
         $members_id = $request->members_id;
-        $mentor_id = Session::get('id_mentor');
+        $mentors_id = $request->session()->get('id'); // get mentors id
         $deadline = $request->deadline;
         $description = $request->description;
         $status = '1';              
 
         $addTask = new Task([    
             'members_id' => $members_id,
-            'mentors_id' => $mentor_id,
+            'mentors_id' => $mentors_id,
             'name' => $name,
             'deadline' => $deadline,
             'description' => $description,
@@ -79,7 +77,7 @@ class TaskController extends Controller
         //  dd($request);
 
         $members_id = $request->members_id; 
-        $mentors_id = '2';    
+        $mentors_id = $request->session()->get('id');    
         $tasks_name = $request->tasks_name;  
         $deadline= $request->deadline; 
         $description = $request->description;
@@ -100,6 +98,25 @@ class TaskController extends Controller
         return redirect('/readalltask');
 
     }
-
+         
+        public function read(Task $task, $id)
+        {
+            if(Session::get('roll') != 1){
+                $data_member = Member::where('id',Session::get('id'))->first();
+                // $data_mentor = Mentor::where('members_id',Session::get('members_id'))->first();                
+                $data_tasks = $task->find($id);
+                
+                return view('task.read',[
+                    'members' => $data_member,
+                    // 'mentors' => $data_mentor,
+                    'tasks' => $data_tasks
+                ]);
+               
+            }elseif(Session::get('roll') != 2){
+                return redirect('/home');
+            }else{
+                return view('/login');
+            } 
+    }
     
 }

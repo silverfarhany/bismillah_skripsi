@@ -98,7 +98,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Task</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Name of member</th>
+                    <th scope="col">From</th>
                     <th scope="col">Deadline</th>
                     <th scope="col">Status</th>                    
                     <th scope="col">Actions</th>
@@ -106,17 +106,15 @@
             </thead>
             <tbody>
                 <?php $no = 1 ?>
-            @foreach($tasks as $task)
+            @foreach(Auth::user()->$tasks as $task)
                 <tr>
                     <td>1</td>
-                    <td>{{ $task->name }}</td>
-                    <td>{{ $task->description }}</td>
-                    <td> {{ $members->find($task->members_id)->name }}</td>
-                    <td>{{ $task->deadline }}</td>
-                    <td>{{ $task->status }}</td>
-                    <td> <a class="far fa-edit icon-md text-warning" href="editTask/{{ $task->id }}"> </a>
-                     <a class="far fa-trash-alt icon-md text-danger" href="deleteTask/{{ $task->id }}"> </a> 
-                    </td>
+                    <td>{{ $tasks->name }}</td>
+                    <td>{{ $tasks->description }}</td>
+                    <td> {{ $data_member->find($tasks->members_id)->name }}</td>
+                    <td>{{ $tasks->deadline }}</td>
+                    <td>{{ $tasks->status }}</td>
+                    <td> <a class="far fa-edit icon-md text-primary" href="editTask/{{ $task->id }}"> </a></td>
                 </tr>
                 @endforeach                
             </tbody>
@@ -128,7 +126,7 @@
 @endsection
 
 
-<!-- Modal-->
+{{-- <!-- Modal-->
 <div class="modal fade" id="exampleModalCenter" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -172,4 +170,4 @@
         </form>
         </div>
     </div>
-    </div>
+    </div> --}}

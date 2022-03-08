@@ -69,8 +69,10 @@ Route::get('/readalltask', [TaskController::class, 'index'])->name('index');
 Route::get('/deleteTask/{id}', [TaskController::class, 'delete'])->name('deleteTask');
 Route::get('/editTask/{id}', [TaskController::class, 'edit']);
 Route::post('/editTask', [TaskController::class, 'update'])->name('editTask');
+Route::get('/readtask', [TaskController::class, 'read'])->name('read');
 
-Route::get('/readtask', function () {return view('task.read');});
+// sudah selesai silahkan di coba
+//owkiiii
 
 Route::get('/readpresensi', function () {return view('presensi.read');});
 Route::get('/readallpresensi', function () {return view('presensi.readall');});

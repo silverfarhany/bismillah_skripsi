@@ -52,4 +52,3 @@ class User extends Authenticatable
 
 
 
-//Alhamdulillah jaza killahu khoiro for always need me, even it just a little thing

@@ -19,4 +19,8 @@ class Member extends Model
     public function getMentor(){
         return $this->hasOne(Division::class);
     }
+
+    public function getTask(){
+        return $this->hasMany(Task::class);
+    }
 }

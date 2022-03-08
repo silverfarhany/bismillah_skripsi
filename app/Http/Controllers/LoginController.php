@@ -33,18 +33,17 @@ class LoginController extends Controller
 
             $request->session()->regenerate();
 
-            $user_id = null;
-            if($user_id = Mentor::where('email', $login['email'])->select('id')->first());
-            elseif($user_id = Member::where('email', $login['email'])->select('id')->first());
+            $user_all = null;
+            if($user_all = Mentor::where('email', $login['email'])->select('id','divisions_id')->first());
+            elseif($user_all = Member::where('email', $login['email'])->select('id','mentors_id', 'divisions_id')->first()){
+                $request->session()->put('mentors_id', $user_all->mentors_id); 
+            }
 
-            // $mentor_id = Mentor::where('email',$request->email)->select('id')->first();
-            // $request->session()->put('id_mentor', $mentor_id->id); 
-            $session_id_roll = User::where('email',$request->email)->select('role','name')->first();
-            $request->session()->put('roll', $session_id_roll->role);
-            $request->session()->put('id', $user_id);
-            $request->session()->put('name', $session_id_roll->name);
-            $request->session()->put('mentors_id', $session_id_roll->mentors_id);
-            $request->session()->put('members_id', $session_id_roll->members_id);
+            $user_id_roll_name = User::where('email',$request->email)->select('id','role','name')->first();
+            $request->session()->put('roll', $user_id_roll_name->role);
+            $request->session()->put('id', $user_all->id);
+            $request->session()->put('name', $user_id_roll_name->name);
+            $request->session()->put('divisions_id', $user_all->divisions_id);
 
             if(Session::get('roll') == 2){
                 return redirect()->intended('/homepeserta');
