@@ -2,7 +2,7 @@ closest task:
 - login <<< Done
 - registrasi <<<< Done
 - fungsi edit member
-- update delete data pembimbing
+- update data pembimbing -> gabisa delete karna ngaruh ke data member dll. pikirin jalan keluarnya
 - update data tugas
 - read data tugas per-member
 

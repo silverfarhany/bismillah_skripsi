@@ -14,22 +14,22 @@ class TaskController extends Controller
     public function index(){
         $members = Member::select('id','name')->get();
         $tasks = Task::all();
-        return view('task.readall',compact('tasks','members'));
+        return view('task.readall', compact('tasks','members'));
     }
 
     public function CreateTask(Request $request)
     {
         $request->validate([
-            'name'=>'required',
             'members_id'=>'required',
-            'deadline' => 'required',
+            'name'=>'required',
             'description' => 'required',                                   
+            'deadline' => 'required'
         ]);
         //$mentor_id = Member::where('id',$request->members_id)->select('mentors_id')->first(); // << hasil disini
         
-        $name = $request->name;
         $members_id = $request->members_id;
         $mentors_id = $request->session()->get('id'); // get mentors id
+        $name = $request->name;
         $deadline = $request->deadline;
         $description = $request->description;
         $status = '1';              
@@ -55,48 +55,49 @@ class TaskController extends Controller
         return redirect('/readalltask');
     }
 
-    public function edit($id) {   
-        $tasks = Task::findOrFail($id);
+    public function edit(Task $tasks, $id) {   
+        $tasks = Task::find($id);
         $members = Member::select('id','name')->get();
-        // dd($tasks);          
+        // // dd($tasks);          
         return view('task.edit',[                        
             'members' => $members,            
             'tasks' => $tasks,    
         ]);
+        
     }
 
-    public function update(Request $request, Task $task)
+    public function update(Request $request, $id)
     {
         
-        $request->validate([                      
+        $this->validate($request, [                      
             'members_id'=>'required',
             'name' => 'required',
-            'deadline' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'deadline' => 'required'
         ]);      
-        //  dd($request);
-
-        $members_id = $request->members_id; 
-        $mentors_id = $request->session()->get('id');    
-        $tasks_name = $request->tasks_name;  
-        $deadline= $request->deadline; 
-        $description = $request->description;
-        $status = '1';  
         
-        $updateTask = [                      
-            'members_id' => $members_id, 
-            'mentors_id' => $mentors_id,           
-            'name' => $tasks_name,
-            'deadline' => $deadline, 
-            'description' => $description,
-            'status' => $status,               
-        ];
-      
-            // dd($updateTask);
-        Task::where('id',$request->id_task)->update($updateTask); 
-        dd($updateTask);           
-        return redirect('/readalltask');
+        $task = Task::find($id);
+        $task->members_id = $request->input('members_id'); 
+        $task->name = $request->input('name');  
+        $task->mentors_id = $request->session()->get('id');    
+        $task->description = $request->input('description');  
+        $task->deadline= $request->date('deadline'); 
+        $task->update();
 
+        return redirect('/readalltask');
+        // $updateTask = [                      
+            // 'members_id' => $members_id, 
+        //     'mentors_id' => $mentors_id,           
+        //     'name' => $tasks_name,
+        //     'deadline' => $deadline, 
+        //     'description' => $description,
+        //     'status' => $status,               
+        // ];
+      
+        //     dd($task);
+        // Task::where('id',$request->id_task)->update($task);       
+        // return redirect('/readalltask');
+        // }
     }
          
         public function read(Task $task, $id)
@@ -118,5 +119,4 @@ class TaskController extends Controller
                 return view('/login');
             } 
     }
-    
 }

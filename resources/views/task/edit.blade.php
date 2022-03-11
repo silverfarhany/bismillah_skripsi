@@ -7,8 +7,10 @@
       Edit Task
      </h3>
     </div>    
-    <form method="post" action ="/editTask" id="editTask">
+    <form action="{{ url('update-task/'.$tasks->id) }}" method="POST">
         @csrf
+        @method('PUT')
+
      <div class="card-body">
       <div class="form-group mb-8"> 
       <div class="form-group row">
@@ -52,7 +54,7 @@
        <div class="col-2">
        </div>
        <div class="col-10">
-        <button type="submit" id="editTask" class="btn btn-success mr-2">Update Task</button>
+        <button type="submit" class="btn btn-success mr-2">Update Task</button>
         <button type="reset" class="btn btn-secondary">Cancel</button>
        </div>
       </div>

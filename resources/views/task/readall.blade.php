@@ -105,16 +105,16 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $no = 1 ?>
             @foreach($tasks as $task)
                 <tr>
-                    <td>1</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $task->name }}</td>
                     <td>{{ $task->description }}</td>
                     <td> {{ $members->find($task->members_id)->name }}</td>
                     <td>{{ $task->deadline }}</td>
                     <td>{{ $task->status }}</td>
-                    <td> <a class="far fa-edit icon-md text-warning" href="editTask/{{ $task->id }}"> </a>
+                    <td> 
+                    <a class="far fa-edit icon-md text-warning" value={{ $task->id }} href="editTask/{{ $task->id }}"> </a>
                      <a class="far fa-trash-alt icon-md text-danger" href="deleteTask/{{ $task->id }}"> </a> 
                     </td>
                 </tr>
@@ -152,8 +152,8 @@
                     </select>
                 </div>             
                 <div class="form-group">
-                    <label for="exampleTextarea">Name of Task</label>
                     {{ csrf_field() }}
+                    <label for="exampleTextarea">Name of Task</label>
                     <input class="form-control" name="name" id="name"></input>
                 </div> 
                 <div class="form-group">
@@ -162,7 +162,7 @@
                 </div> 
                 <div class="form-group">
                     <label for="example-date-input" class="col-2 col-form-label">Deadline</label>                    
-                     <input class="form-control" type="date" value="2011-08-19" id="example-date-input" name="deadline" id="deadline"/>                    
+                     <input class="form-control" type="date" name="deadline" id="deadline" value="{{ date('Y-m-d') }}/>                    
                 </div>                   
             </div>       
             <div class="modal-footer">

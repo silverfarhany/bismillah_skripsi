@@ -157,23 +157,25 @@
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <div class="modal-body">                
+            <div class="modal-body">  
+        <form>              
                 <div class="form-group">
                     <label for="exampleTextarea">Tell Us How Was Your Day</label>
-                    <textarea class="form-control" rows="5"></textarea>
+                    <textarea class="form-control" rows="5" id="activity" name="activity"></textarea>
                 </div> 
                 <div class="form-group">                    
                     <div></div>
                     <div class="custom-file">
                      <input type="file" class="custom-file-input" id="customFile"/>
-                     <label class="custom-file-label" for="customFile">Today's activity</label>
+                     <label class="custom-file-label" for="customFile" id="proof" name="proof">Today's activity</label>
                     </div>
                    </div>   
             </div>            
             <div class="modal-footer">
                 <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary font-weight-bold">Submit</button>
+                <button type="button" id="submitPresence" class="btn btn-primary font-weight-bold">Submit</button>
             </div>
+        </form>
         </div>
     </div>
 </div>

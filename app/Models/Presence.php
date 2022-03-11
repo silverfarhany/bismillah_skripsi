@@ -7,7 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Presence extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
+    protected $fillable = ['id','members_id','date','end','activity','proof'];
+    protected $table = 'presences';
+
+    public function getMember(){
+        return $this->belongsTo(Member::class);
+    }
+   
 }
 
 
