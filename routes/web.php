@@ -11,6 +11,7 @@ use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\PresenceController;
 use App\Models\Mentor;
 
 /*
@@ -71,7 +72,8 @@ Route::get('/editTask/{id}', [TaskController::class, 'edit']);
 Route::put('/update-task/{id}', [TaskController::class, 'update']);
 Route::get('/readtask', [TaskController::class, 'read'])->name('read');
 
-
+Route::get('/presence', [PresenceController::class, 'index']);
+Route::post('/submitpresence', [PresenceController::class, 'submit'])->name('submit');
 Route::get('/readpresensi', function () {return view('presensi.read');});
 Route::get('/readallpresensi', function () {return view('presensi.readall');});
 

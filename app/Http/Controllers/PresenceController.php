@@ -16,21 +16,26 @@ class PresenceController extends Controller
 
     public function submit(Request $request)
     {
+        $proof_name = $request->proof->getClientOriginalName();
+        $request->proof->storeAs('public/files/proof', $proof_name);
         $request->validate([
             'members_id'=>'required',
             'date'=>'required',
             'end' => 'required',                                   
             'activity' => 'required',
-            'proof' => 'required'
+            'proof' => 'required|mimes:txt,xlx,xls,pdf,jpg,png'
         ]);
         
-        
+        $proof_name = $request->proof->getClientOriginalName();
+        // $request->proof->storeAs('public/files/proof', $proof_name);
+
         $members_id = $request->session()->get('id');;        
         $date = $request->Carbon::now()->format('Y-m-d');
         $end = $request->Carbon::now()->format('H:i:m');
         $activity = $request->activity;
-        $proof = $request->file('proof')->getClientOriginalName();              
+        $proof = $request->proof->storeAs('public/files/proof', $proof_name);                          
 
+        dd($request->$proof);
         $submitPresence = new Presence([    
             'members_id' => $members_id,            
             'date' => $date,
@@ -39,7 +44,7 @@ class PresenceController extends Controller
             'proof' => $proof,            
         ]);
         
-
+        dd($submitPresence);
         $submitPresence->save();
         return redirect('/homepeserta');
 

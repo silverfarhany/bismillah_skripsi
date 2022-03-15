@@ -17,8 +17,8 @@ class CreateMembersTable extends Migration
             $table->id();
             $table->foreignId('mentors_id')->references('id')->on('mentors');
             $table->foreignId('divisions_id')->references('id')->on('divisions');
-            $table->time('start');
-            $table->time('end');
+            $table->date('start');
+            $table->date('end');
             $table->string('name');
             $table->string('nikp');
             $table->string('univ');
