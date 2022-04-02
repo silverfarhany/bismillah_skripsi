@@ -31,7 +31,7 @@
        </div>
       </div>      
       <div class="form-group row">
-        <label for="example-url-input" class="col-2 col-form-label">Name</label>
+        <label for="example-url-input" class="col-2 col-form-label">Nama</label>
         <div class="col-10">
          <input class="form-control" type="name" placeholder="Insert Name" name="name" id="name"/>
         </div>
@@ -53,7 +53,7 @@
        <div class="col-2">
        </div>
        <div class="col-10">
-        <button type="submit" id="addMentor" class="btn btn-success mr-2">Add Mentor</button>
+        <button type="submit" id="addMentor" class="btn btn-success mr-2">Add Pembimbing</button>
         <button type="reset" class="btn btn-secondary">Cancel</button>
        </div>
       </div>

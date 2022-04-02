@@ -26,7 +26,17 @@ class MemberController extends Controller
         return view('peserta.read',compact('division','mentors','members'));
     }
 
-    
+    public function alldata(){
+        return view('peserta.alldata');
+    }
+
+    public function aktifasi(){
+        return view('peserta.aktifasi');
+    }
+
+    public function pengajuan(){
+        return view('peserta.pengajuan');
+    }
     
     public function storeDataPost(Request $request)
     {                

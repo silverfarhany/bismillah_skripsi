@@ -28,7 +28,7 @@ class RegisController extends Controller
     {
         $validated = $request->validate([
             'fullname' => 'required|max:255',
-            'email' => 'required|email:dns',
+            'email' => 'required',
             'password' => 'required|confirmed|min:8',
         ]);
 

@@ -7,10 +7,10 @@
             <!--begin::Header-->
             <div class="card-header border-0 pt-6">
                 <h3 class="card-title">
-                    <span class="card-label font-weight-bolder font-size-h4 text-dark-75">Today's Task </span>
+                    <span class="card-label font-weight-bolder font-size-h4 text-dark-75">Tugas Anda</span>
                 </h3>
                 <div class="card-toolbar">
-                    <footer class="footer">Your Today's Task is :
+                    <footer class="footer">
                         <cite title="Source Title">Some Task</cite>
                     </footer>
                 </div>
@@ -20,7 +20,7 @@
             <div class="card-body d-flex align-items-center justify-content-between pt-7 flex-wrap">
                  <!-- Button trigger modal-->
                  <button href="#" class="btn btn-sm btn-primary font-weight-bolder px-6" 
-                 data-toggle="modal" data-target="#take_task">Take</button>
+                 data-toggle="modal" data-target="#take_task">Kerjakan</button>
                  <!--end button trigger-->
             </div>
             <!--end::Body-->
@@ -35,7 +35,7 @@
             <!--begin::Header-->
             <div class="card-header border-0 pt-6">
                 <h3 class="card-title">
-                    <span class="card-label font-weight-bolder font-size-h4 text-dark-75">Today's Presence</span>
+                    <span class="card-label font-weight-bolder font-size-h4 text-dark-75">Presensi</span>
                 </h3>
                 <div class="card-toolbar">                    
                 </div>
@@ -45,7 +45,7 @@
             <div class="card-body d-flex align-items-center justify-content-between pt-7 flex-wrap">
                 <!-- Button trigger modal-->
                 <button href="#" class="btn btn-sm btn-primary font-weight-bolder px-6" 
-                data-toggle="modal" data-target="#submit_presence">Finish</button>
+                data-toggle="modal" data-target="#submit_presence">Selesai</button>
                 <!--end button trigger-->
             </div>
                 
@@ -59,7 +59,7 @@
             <!--begin::Header-->
             <div class="card-header border-0 pt-6">
                 <h3 class="card-title">
-                    <span class="card-label font-weight-bolder font-size-h4 text-dark-75">Today's KR</span>
+                    <span class="card-label font-weight-bolder font-size-h4 text-dark-75">Jurnal Harian</span>
                 </h3>
                 <div class="card-toolbar">
 
@@ -70,7 +70,7 @@
             <div class="card-body d-flex align-items-center justify-content-between pt-7 flex-wrap">
                 <!-- Button trigger modal-->
                 <button href="#" class="btn btn-sm btn-primary font-weight-bolder px-6" 
-                data-toggle="modal" data-target="#submit_kr">Submit</button>
+                data-toggle="modal" data-target="#submit_kr">Lihat</button>
                 <!--end button trigger-->
             </div>
             <!--end::Body-->

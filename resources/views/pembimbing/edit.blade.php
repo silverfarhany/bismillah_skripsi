@@ -49,7 +49,7 @@
        <div class="col-2">
        </div>
        <div class="col-10">
-        <button type="submit" id="editMentor" class="btn btn-success mr-2">Update Mentor</button>
+        <button type="submit" id="editMentor" class="btn btn-success mr-2">Update Pembimbing</button>
         <button type="reset" class="btn btn-secondary">Cancel</button>
        </div>
       </div>

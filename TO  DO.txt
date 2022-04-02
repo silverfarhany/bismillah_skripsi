@@ -1,26 +1,27 @@
-closest task:
-- fungsi edit member
+All task:
+- fungsi edit member -> masih error
 - update data pembimbing -> gabisa delete karna ngaruh ke data member dll.
-- update data tugas
+- update data tugas -> masih error
 - read data tugas per-member (sesuai member yg ke session id nya saat login)
 - CRU data presensi:
-create : submit ketika beres KP per-hari
-Read : read data presensi semua peserta (pembimbing), read data presensi per-member (peserta)
-update: untuk pembimbing
+create : submit ketika beres KP per-hari -> data belum ke store ke database
+Read : read data presensi semua peserta (pembimbing)-> belum sama sekali
+read data presensi per-member (peserta) -> belum sama sekali
+update: untuk pembimbing -> belum sama sekali
 
-- CRUD data KR
+- CRUD data KR -> baru view, belum ada fungsi sama sekali
 create : peserta 
 read : read all data oleh pembimbing, read juga untuk per-member
 update & delete : oleh pembimbing 
 
-- Sertifikat peserta <<<  Make the certificate template first, its maybe hard to make right position for the name
+- Sertifikat peserta <<<  Make the certificate template first, its maybe hard to make right position for the name -> belum sama sekali
 
-- dashboard pembimbing : 
+- dashboard pembimbing : -> baru view, belum pake fungsi sama sekali
 menampilkan jumlah pengajuan (data dari sistem lain)
 menampilkan data peserta KP periode saat ini (diliat dari start date & end date tiap peserta)
 yang bawahnya masi bingung diisi apaa
 
-- fungsi search di header <<< Jquery
+- fungsi search di header <<< Jquery (kayanya gausah)
 - notifikasi <<<< https://laravel.com/docs/9.x/broadcasting#client-pusher-channels
 - profile
 - edit profile <<< https://laravel.com/docs/9.x/filesystem#file-uploads (For Profile Photo)

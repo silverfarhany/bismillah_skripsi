@@ -53,6 +53,9 @@ Route::post('/editScore', [ScoreController::class, 'update'])->name('editScore')
 Route::get('/homepeserta', function () {return view('peserta.index');});
 Route::get('/final', function () {return view('peserta.final');});
 Route::get('/readmember', [MemberController::class, 'read']);
+Route::get('/alldata', [MemberController::class, 'alldata']);
+Route::get('/pengajuan', [MemberController::class, 'pengajuan']);
+Route::get('/aktifasi', [MemberController::class, 'aktifasi']);
 Route::get('/createmember', [MemberController::class,'index']);
 Route::post('/submitmember', [MemberController::class,'storeDataPost'])->name('submitmember');
 Route::get('/editMember/{id}', [MemberController::class, 'edit']);
