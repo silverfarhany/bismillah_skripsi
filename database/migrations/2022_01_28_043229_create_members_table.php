@@ -22,11 +22,11 @@ class CreateMembersTable extends Migration
             $table->string('name');
             $table->string('nikp');
             $table->string('univ');
-            $table->string('email');
-            $table->longText('description');
+            $table->string('email');            
             $table->bigInteger('phone');
             $table->string('cv');
-            $table->string('internship_letter');            
+            $table->string('internship_letter'); 
+            $table->string('transkip');           
         });
     }
 
