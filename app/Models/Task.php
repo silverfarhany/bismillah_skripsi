@@ -7,19 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    public $timestamps = false;
-    protected $fillable = ['id','mentors_id','members_id','name','deadline','description','status'];
+    protected $fillable = ['id','mentors_id','members_id','name','deadline','description','status','revision_note'];
     protected $table = 'tasks';
 
     public function getMember(){
-        return $this->hasOne(Member::class);
+        return $this->belongsTo(Member::class,'members_id');
     }
 
     public function getMentor(){
-        return $this->hasOne(Mentor::class);
+        return $this->belongsTo(Mentor::class,'mentors_id');
     }
 
     public function getPoint(){
         return $this->belongsTo(Point::class);
     }    
+
+    public function getFile(){
+        return $this->hasMany(TaskFile::class,'tasks_id');
+    }
+
+
 }

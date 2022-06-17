@@ -16,9 +16,12 @@ class CreatePresencesTable extends Migration
         Schema::create('presences', function (Blueprint $table) {
             $table->id();
             $table->foreignId('members_id')->references('id')->on('members');
-            $table->date('date');            
-            $table->time('end');
-            $table->string('proof');
+            $table->date('date');
+            $table->time('start')->nullable();
+            $table->time('end')->nullable();
+            $table->text('activity')->nullable();
+            $table->string('proof')->nullable();
+            $table->timestamps();
         });
     }
 

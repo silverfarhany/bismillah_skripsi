@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Presence extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['id','members_id','date','end','activity','proof'];
+    protected $fillable = ['id', 'members_id', 'date', 'end', 'activity', 'proof', 'start'];
     protected $table = 'presences';
 
-    public function getMember(){
-        return $this->belongsTo(Member::class);
+    public function getMember()
+    {
+        return $this->belongsTo(Member::class,'members_id');
     }
-   
 }
 
 

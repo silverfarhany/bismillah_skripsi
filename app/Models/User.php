@@ -46,9 +46,3 @@ class User extends Authenticatable
     //Disable timestap
     public $timestamps = false;
 }
-
-
-
-
-
-

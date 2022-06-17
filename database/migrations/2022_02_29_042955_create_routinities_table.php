@@ -17,7 +17,8 @@ class CreateRoutinitiesTable extends Migration
             $table->id();
             $table->foreignId('members_id')->references('id')->on('members');
             $table->tinyInteger('type');
-            $table->date('date');        
+            $table->date('date');
+            $table->timestamps();
         });
     }
 

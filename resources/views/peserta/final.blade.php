@@ -1,5 +1,5 @@
 @extends('peserta.main')
-@section('content') 
+@section('content')
 
 <div class="container">
     <!--begin::Dashboard-->
@@ -19,43 +19,63 @@
             <table class="table table-separate">
                 <tbody>
                     <tr>
-                        <td width="200px">Your Name</td>
-                        <td>:  </td>
+                        <td width="40%"><b>A. Pengetahuan </b></td>
                     </tr>
+                    @foreach($parameter_A as $parameter)
                     <tr>
-                        <td>Your First task Score</td>
-                        <td>: </td>
+                        <td width="40%">{{$parameter->description}}</td>
+                        <td width="3%">: </td>
+                        <td>{{empty($formEvaluasi->evaluasi) ? '-' : $formEvaluasi->evaluasi->where('parameter_id',$parameter->id)->first()->point}}</td>
                     </tr>
+                    @endforeach
+
                     <tr>
-                        <td>Your Second task score</td>
-                        <td>: </td>
+                        <td width="40%"><b>B. Keterampilan </b></td>
                     </tr>
+                    @foreach($parameter_B as $parameter)
                     <tr>
-                        <td>Your Third task score</td>
-                        <td>: </td>
+                        <td width="40%">{{$parameter->description}}</td>
+                        <td width="3%">: </td>
+                        <td>{{empty($formEvaluasi->evaluasi) ? '-' : $formEvaluasi->evaluasi->where('parameter_id',$parameter->id)->first()->point}}</td>
+
                     </tr>
+                    @endforeach
                     <tr>
-                        <td>Your Fourths task score</td>
-                        <td>: </td>
+                        <td width="40%"><b>C. Sikap </b></td>
                     </tr>
+                    @foreach($parameter_C as $parameter)
                     <tr>
-                        <td>Your Final task score</td>
-                        <td>: </td>
+                        <td width="40%">{{$parameter->description}}</td>
+                        <td width="3%">: </td>
+                        <td>{{empty($formEvaluasi->evaluasi) ? '-' : $formEvaluasi->evaluasi->where('parameter_id',$parameter->id)->first()->point}}</td>
                     </tr>
+                    @endforeach
                     <tr>
-                        <td>Your Final score</td>
-                        <td>: </td>
-                    </tr>                    
+                    <td width="40%"><b>Rata-rata </b>
+                    <td width="3%">: </td>
+                    <td>{{empty($formEvaluasi->average) ? '-' : $formEvaluasi->average}}</td>
+                    </tr>
+
+                    <tr>
+                    <td width="40%"><b>Predikat </b>
+                    <td width="3%">: </td>
+                    <td>{{empty($formEvaluasi->predicate) ? '-' : $formEvaluasi->predicate}}</td>
+                    </tr>
+
                 </tbody>
             </table>
-            <!--end::Table-->   
-        
+            <!--end::Table-->
+
         </div>
 
     </div>
 
-    <br> </br>        
-    <a href="/readcertificate" type="submit" class="btn btn-success">Lihat Sertifikat</a>            
+    <br> </br>
+    @if(empty($member->certificate))
+    <button class="btn btn-success" disabled>Lihat Sertifikat</button>
+    @else
+    <a href="{{asset('/file/sertifikat_peserta/'.@$member->certificate->file)}}"  class="btn btn-success">Lihat Sertifikat</a>
+    @endif
     <br> </br>
 
-@endsection
+    @endsection

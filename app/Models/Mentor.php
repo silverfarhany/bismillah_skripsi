@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mentor extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['id','divisions_id','name','email','phone'];
+    protected $fillable = ['id', 'divisions_id', 'name', 'email', 'phone','is_hr'];
     protected $table = 'mentors';
     /*
     public function getMember(){
@@ -19,4 +19,9 @@ class Mentor extends Model
         return $this->hasOne(Division::class);
     }
     */
+
+    public function getDivision()
+    {
+        return $this->belongsTo(Division::class, 'divisions_id');
+    }
 }

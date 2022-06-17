@@ -20,10 +20,10 @@
        </div>
       </div>
       <div class="form-group row">
-       <label  class="col-2 col-form-label">Division</label>
+       <label  class="col-2 col-form-label">Divisi</label>
        <div class="col-10">
         {{ csrf_field() }}
-        <input class="form-control" type="text" placeholder="Input Name of Division" id="name" name="name"/>
+        <input class="form-control" type="text" placeholder="Input Nama Divisi" id="name" name="name"/>
        </div>
       </div>    
      <div class="card-footer">
@@ -31,7 +31,7 @@
        <div class="col-2">
        </div>
        <div class="col-10">
-        <button type="submit" id="addDiv" class="btn btn-success mr-2">Add</button>
+        <button type="submit" id="addDiv" class="btn btn-success mr-2">Tambah</button>
         <button type="reset" class="btn btn-secondary">Cancel</button>
        </div>
       </div>
@@ -47,7 +47,7 @@
     <div class="card-header flex-wrap py-5">
         <div class="card-title">
             <h3 class="card-label">Data Divisi 
-            <div class="text-muted pt-2 font-size-sm">all data divisi</div></h3>
+            <div class="text-muted pt-2 font-size-sm">semua data divisi</div></h3>
         </div>
         <div class="card-toolbar">
             <!--begin::Dropdown-->

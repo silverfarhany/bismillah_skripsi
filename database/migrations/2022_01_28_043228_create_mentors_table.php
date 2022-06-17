@@ -17,8 +17,10 @@ class CreateMentorsTable extends Migration
             $table->id();
             $table->foreignId('divisions_id')->references('id')->on('divisions');
             $table->string('name');
-            $table->string('email');
-            $table->bigInteger('phone');
+            $table->string('email')->unique();
+            $table->string('phone');
+            $table->boolean('is_hr')->default(0);
+            $table->timestamps();
         });
     }
 

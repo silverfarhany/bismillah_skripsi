@@ -105,20 +105,7 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach($tasks as $task)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $task->name }}</td>
-                    <td>{{ $task->description }}</td>
-                    <td> {{ $members->find($task->members_id)->name }}</td>
-                    <td>{{ $task->deadline }}</td>
-                    <td>{{ $task->status }}</td>
-                    <td> 
-                    <a class="far fa-edit icon-md text-warning" value={{ $task->id }} href="editTask/{{ $task->id }}"> </a>
-                     <a class="far fa-trash-alt icon-md text-danger" href="deleteTask/{{ $task->id }}"> </a> 
-                    </td>
-                </tr>
-                @endforeach                
+                     
             </tbody>
         </table>
         <!--end: Datatable-->
@@ -127,49 +114,3 @@
 <!--end::Card-->
 @endsection
 
-
-<!-- Modal-->
-<div class="modal fade" id="exampleModalCenter" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-
-            <form method="post" action ="/submittask"  id="addTask">
-                @csrf
-            <div class="modal-header">
-                <h5 class="modal-title" id="submit_presence">Create some Task</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i aria-hidden="true" class="ki ki-close"></i>
-                </button>
-            </div>
-            <div class="modal-body">                                       
-                <div class="form-group">
-                    <label for="exampleTextarea">Member's Name</label>
-                    {{ csrf_field() }}
-                    <select class="form-control" type="search" placeholder="Choose Mentor's Name" name="members_id" id="members_id">
-                        @foreach ($members as $member)
-                    <option value="{{ $member->id }}">{{ $member->name }}</option>
-                        @endforeach
-                    </select>
-                </div>             
-                <div class="form-group">
-                    {{ csrf_field() }}
-                    <label for="exampleTextarea">Name of Task</label>
-                    <input class="form-control" name="name" id="name"></input>
-                </div> 
-                <div class="form-group">
-                    <label for="exampleTextarea">Description of Task</label>
-                    <textarea class="form-control" rows="3" name="description" id="description"></textarea>
-                </div> 
-                <div class="form-group">
-                    <label for="example-date-input" class="col-2 col-form-label">Deadline</label>                    
-                     <input class="form-control" type="date" name="deadline" id="deadline" value="{{ date('Y-m-d') }}/>                    
-                </div>                   
-            </div>       
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                <button type="submit" id="addTask" class="btn btn-primary font-weight-bold">Save Task</button>
-            </div>
-        </form>
-        </div>
-    </div>
-    </div>

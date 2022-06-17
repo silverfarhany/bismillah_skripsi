@@ -21,6 +21,8 @@ class CreateTasksTable extends Migration
             $table->date('deadline');
             $table->string('description');
             $table->tinyInteger('status');
+            $table->string('revision_note')->nullable();
+            $table->timestamps();
         });
     }
 

@@ -15,9 +15,11 @@ class CreateCertificatesTable extends Migration
     {
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('members_id')->references('id')->on('members');
-            $table->mediumInteger('number');
-            $table->date('created_date');    
+            $table->foreignId('member_id')->references('id')->on('members');
+            $table->string('file');
+            $table->datetime('date');
+            $table->timestamps();
+            
         });
     }
 

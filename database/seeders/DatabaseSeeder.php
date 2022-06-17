@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Division;
+use App\Models\Mentor;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call(DivisionSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(MentorSeeder::class);
+        $this->call(MemberSeeder::class);
+        $this->call(parameterSeeder::class);
     }
 }

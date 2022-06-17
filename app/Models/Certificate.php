@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Certificate extends Model
 {
     use HasFactory;
+    protected $fillable = ['member_id','date','file'];
+
+    public function getMember(){
+        return $this->belongsTo(Member::class,'member_id');
+    }
 }
