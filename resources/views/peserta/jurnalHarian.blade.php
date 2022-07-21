@@ -41,9 +41,10 @@
         <table class="table table-bordered  table-checkable">
             <thead class="bg-secondary">
                 <tr class="">
-                    <th width="25%">Tanggal</th>
-                    <th width="55%">Kegiatan</th>
+                    <th width="20%">Tanggal</th>
+                    <th width="40%">Kegiatan</th>
                     <th width="20%">Jumlah Menit</th>
+                    <th width="20%">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,12 +55,30 @@
                 <tr>
                     <td rowspan="{{count($journals)}}">{{date('d F Y',strtotime($date->date))}}</td>
                     <td>{!! @$journals->first()->status == 0 ? '<i class="fa fa-clock text-warning"></i>' : (@$journals->first()->status == 1 ? '<i class="fa fa-times text-danger"></i>' : '<i class="fa fa-check text-success"></i>') !!} {{@$journals->first()->description}} </td>
-                    <td>{{@$journals->first()->minute}} Menit</td>
+                    <td>{{@$journals->first()->minute}} Menit</td>        
                 </tr>   
                 @foreach($journals->slice(1) as $journal)
                 <tr>
                 <td>{!! $journal->status == 0 ? '<i class="fa fa-clock text-warning"></i>' : ($journal->status== 1 ? '<i class="fa fa-times text-danger"></i>' : '<i class="fa fa-check text-success"></i>') !!} {{$journal->description}} </td>
                 <td>{{$journal->minute}} Menit</td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-success font-weight-bold mr-2 btnDetail" >
+                        <i class="far fa-eye"></i> Detail
+                    </a>
+                    <a href="#" class="btn  btn-sm btn-primary font-weight-bold mr-2 btnAktivasi">
+                        <i class="fas fa-check"></i> Aktifasi
+                    </a>
+                </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-success font-weight-bold mr-2 btnDetail" >
+                            <i class="far fa-eye"></i> Detail
+                        </a>
+                        <a href="#" class="btn  btn-sm btn-primary font-weight-bold mr-2 btnAktivasi">
+                            <i class="fas fa-check"></i> Aktifasi
+                        </a>
+                    </td>
                 </tr>
                 @endforeach 
                 @endforeach
