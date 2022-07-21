@@ -55,7 +55,73 @@
                 <tr>
                     <td rowspan="{{count($journals)}}">{{date('d F Y',strtotime($date->date))}}</td>
                     <td>{!! @$journals->first()->status == 0 ? '<i class="fa fa-clock text-warning"></i>' : (@$journals->first()->status == 1 ? '<i class="fa fa-times text-danger"></i>' : '<i class="fa fa-check text-success"></i>') !!} {{@$journals->first()->description}} </td>
-                    <td>{{@$journals->first()->minute}} Menit</td>        
+                    <td>{{@$journals->first()->minute}} Menit</td> 
+                    @if(@$journals->first()->status == 0)
+                    <td>
+                        <button type="button" class="btn btn-sm btn-success mr-2" data-toggle="modal" data-target="#approve-{{@$journals->first()->id}}">
+                            <i class="fa fa-check"></i> Approve
+                        </button>
+                        <div class="modal fade" id="approve-{{@$journals->first()->id}}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title">Approval Confirmation</h3>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <i aria-hidden="true" class="ki ki-close"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="modal-body">
+                                        <p class="font-weight-bold mb-2"> Are you sure to approve this Journal ?</p>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <form action="{{ route('approve-journal', @$journals->first()->id) }}" method="POST">
+                                            @method('PATCH')
+                                            @csrf
+                                            <div class="row justify-content-end no-gutters">
+                                                <button type="submit" class="btn btn-success px-4 mr-2">Approve</button>
+                                                <button type="button" class="btn btn-light text-muted" data-dismiss="modal">Cancel</button>
+                                            </div>
+                                        </form> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-sm btn-danger mr-2" data-toggle="modal" data-target="#reject-{{@$journals->first()->id}}">
+                            <i class="fa fa-times"></i> Reject
+                        </button>
+                        <div class="modal fade" id="reject-{{@$journals->first()->id}}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title">Rejection Confirmation</h3>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <i aria-hidden="true" class="ki ki-close"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="modal-body">
+                                        <p class="font-weight-bold mb-2"> Are you sure to reject this Journal ?</p>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <form action="{{ route('reject-journal', @$journals->first()->id) }}" method="POST">
+                                            @method('PATCH')
+                                            @csrf
+                                            <div class="row justify-content-end no-gutters">
+                                                <button type="submit" class="btn btn-danger px-4 mr-2">Reject</button>
+                                                <button type="button" class="btn btn-light text-muted" data-dismiss="modal">Cancel</button>
+                                            </div>
+                                        </form> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </td>
+                    @endif
                 </tr>   
                 @foreach($journals->slice(1) as $journal)
                 <tr>

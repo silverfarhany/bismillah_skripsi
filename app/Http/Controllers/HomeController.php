@@ -8,6 +8,7 @@ use App\Models\Member;
 use App\Models\Mentor;
 use App\Models\Presence;
 use App\Models\DailyJournal;
+use App\Models\FormEvaluation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 //use App\Http\Controllers\HomeController;
@@ -20,7 +21,9 @@ class HomeController extends Controller
             $journalDate = DailyJournal::select('date')->where('member_id',$request->session()->get('id'))->groupBy('date')->get();
             $myMember = Member::where('email', Auth::User()->email)->first();
             $presensiNow = Presence::where('members_id', $myMember->id)->where('date', date('Y-m-d'))->first();
-            return view('peserta.index', compact('presensiNow','journalDate'));
+            $cekStatus = FormEvaluation::where('member_id',$request->session()->get('id'))->get();
+            // dd($cekStatus);
+            return view('peserta.index', compact('presensiNow','journalDate','cekStatus'));
         } elseif (Session::get('roll') == 1 || Session::get('roll') == 3) {
             $pengajuan = Member::where('submission_status', 'Pending')->count();
             $peserta = Member::where('is_aktif', 1)->count();

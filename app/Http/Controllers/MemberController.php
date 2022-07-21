@@ -289,16 +289,47 @@ class MemberController extends Controller
         return back()->with('success','Pengajuan Berhasil Dikirim');
     }
 
-    public function export(){
+    public function export(Request $request){
+        $request->validate([
+            'status'=>'required',
+            'start'=>'required',
+            'end'=>'required'
+        ]);
         $spreadsheet = IOFactory::load('file/excel_template/Data-Peserta.xlsx');
         foreach(range('A','H') as $columnID) {
             $spreadsheet->getActiveSheet()->getColumnDimension($columnID)
                 ->setAutoSize(true);
         }
         if(auth()->user()->role == '3'){
-            $members = Member::with('getDivision')->where('is_aktif',1)->get();
+            if($request->status == 1)
+            {
+                $members = Member::with('getDivision')->where('is_aktif',1)
+                ->where('start','>=',$request->start)->where('start','<=',$request->end)
+                ->get();
+            }
+            else
+            {
+                $members = Member::with('getDivision')->where('is_aktif',1)
+                ->where('end','>=',$request->start)->where('end','<=',$request->end)
+                ->get();
+                // $members = Member::with('getDivision')->where('is_aktif',1)->get();    
+            }
         }else{
-            $members = Member::with('getDivision')->where('is_aktif',1)->where('mentors_id',session()->get('id'))->get();
+            if($request->status == 1)
+            {
+                $members = Member::with('getDivision')->where('is_aktif',1)
+                ->where('start','>=',$request->start)->where('start','<=',$request->end)
+                ->where('mentors_id',session()
+                ->get('id'))->get();
+            }
+            else
+            {
+                $members = Member::with('getDivision')->where('is_aktif',1)
+                ->where('end','>=',$request->start)->where('end','<=',$request->end)
+                ->where('mentors_id',session()
+                ->get('id'))->get();
+                // $members = Member::with('getDivision')->where('is_aktif',1)->where('mentors_id',session()->get('id'))->get();
+            }
         }
        
         $row = 2;
@@ -318,7 +349,14 @@ class MemberController extends Controller
         $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
         ob_end_clean(); 
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header("Content-Disposition: attachment; filename=Reports Data Peserta" . date('Y-m-d') . ".xlsx");
+        if($request->status == 1)
+            {
+                header("Content-Disposition: attachment; filename=Reports Data Peserta Mulai PKL" . date('Y-m-d',strtotime($request->start)) . '_to_' . date('Y-m-d',strtotime($request->end)) . ".xlsx");
+            }
+            else
+            {
+                header("Content-Disposition: attachment; filename=Reports Data Peserta Selesai PKL" . date('Y-m-d',strtotime($request->start)) . '_to_' . date('Y-m-d',strtotime($request->end)) . ".xlsx");   
+            }
         $writer->save('php://output');
     }
 }

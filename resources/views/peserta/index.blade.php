@@ -11,6 +11,19 @@
     </div>
 </div>
 @endif -->
+
+@if(count($cekStatus) > 0)
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-custom card-stretch gutter-b">
+            <div class="card-body d-flex align-items-center justify-content-between pt-7 flex-wrap">
+                <h2>Selamat, Anda telah menyelesaikan Praktik Kerja Lapangan Anda.</h2>
+                <h3>Silahkan cek nilai Anda di <a href="/final" style="text-decoration:underline">sini</a></h3>
+            </div>
+        </div>
+    <div>
+</div>
+@else
 <div class="row">
     <div class="col-lg-4">
         <!--begin::Stats Widget 1-->
@@ -105,7 +118,6 @@
     </div>
 </div>
 
-
 <!--begin::Stats big Widget -->
 <div class="card card-custom card-stretch gutter-b">
     <!--begin::Header-->
@@ -165,6 +177,7 @@
     </div>
     <!--end::Body-->
 </div>
+@endif
 <!--end::Stats Widget 1-->
 
 <!-- Modal-->
