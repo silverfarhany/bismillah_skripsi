@@ -100,8 +100,8 @@ Route::group(['middleware' => ['mentor']], function () {
     Route::post('/editScore', [ScoreController::class, 'update'])->name('editScore');
     Route::get('/score/{form}/detail', [ScoreController::class, 'getScorebyForm']);
     Route::get('/score/export', [ScoreController::class, 'export']);
-    Route::patch('/dailyJournal/{id}/approve', [DailyJournalController::class, 'Approve']);
-    Route::patch('/dailyJournal/{id}/reject', [DailyJournalController::class, 'reject']);
+    Route::patch('/dailyJournal/{id}/approve', [DailyJournalController::class, 'Approve'])->name('approve-journal');
+    Route::patch('/dailyJournal/{id}/reject', [DailyJournalController::class, 'reject'])->name('reject-journal');
     Route::get('/dailyJournal/{id}/export', [DailyJournalController::class, 'export']);
 });
 

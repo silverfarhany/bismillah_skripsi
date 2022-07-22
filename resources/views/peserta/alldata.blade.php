@@ -34,7 +34,7 @@
                           >
                         </li>
                         <li class="navi-item">
-                          <a href="/member/export" class="navi-link">
+                          <a href="javascript:void(0)" class="navi-link" id="downloadPeserta">
                             <span class="navi-icon">
                               <i class="far fa-user"></i>
                             </span>
@@ -324,6 +324,45 @@
     </div>
 </div>
 
+<div class="modal fade" id="modalDownloadPeserta" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Download Data Peserta</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <form action="/member/export" method="get">
+                @csrf
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Status</label>
+                    <select name="status" class="form-control" required>
+                        <option value="" hidden>-- Select --</option>
+                        <option value="1">Mulai PKL</option>
+                        <option value="2">Selesai PKL</option>
+                    </select>
+                </div>
+            
+                <div class="form-group">
+                    <label>Dari Tanggal</label>
+                    <input type="date" class="form-control" name="start" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Sampai</label>
+                    <input type="date" class="form-control" name="end" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary font-weight-bold">Download</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="modalDownloadPresensi" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -480,6 +519,10 @@
                
                 $('#modalJournal').modal('show');
             });
+        });
+
+        $(document).on('click','#downloadPeserta',function(){
+            $("#modalDownloadPeserta").modal('show');
         });
 
         $(document).on('click','#downloadPresensi',function(){

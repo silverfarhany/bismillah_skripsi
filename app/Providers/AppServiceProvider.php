@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+use App\Models\FormEvaluation;
+use Exception;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +26,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        try {
+
+            view()->composer(['peserta.*'], function ($view)
+            {
+                $cek = FormEvaluation::where('member_id', \Session::get('id'))->get();
+                
+                $view->with('cek', $cek);    
+            });
+
+        } catch (Exception $e) {
+            
+		    return redirect()->route('login');
+        
+        }
     }
 }
