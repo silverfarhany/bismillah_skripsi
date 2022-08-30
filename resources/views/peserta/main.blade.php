@@ -154,7 +154,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
                                     <span class="menu-text">Dashboard</span>
                                 </a>
                             </li>
-                            @if(count($cek) <= 0)
+                            {{-- @if(count($cek) <= 0) --}}
                             <li class="menu-section">
                                 <h4 class="menu-text">On-Going</h4>
                                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
@@ -172,7 +172,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
                                     <span class="menu-text">Presensi Anda</span>
                                 </a>
                             </li>
-                            @endif
+                            {{-- @endif --}}
                             <li class="menu-section">
                                 <h4 class="menu-text">Final</h4>
                                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
