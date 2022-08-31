@@ -16,8 +16,8 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card card-custom card-stretch gutter-b">
-            <div class="card-body d-flex align-items-center justify-content-between pt-7 flex-wrap">
-                <h2>Selamat, Anda telah menyelesaikan Praktik Kerja Lapangan Anda.</h2>
+            <div class="card-body align-items-center justify-content-between pt-7 flex-wrap">
+                <h2>Selamat, Anda telah menyelesaikan Praktik Kerja Lapangan Anda.</h2><br />
                 <h3>Silahkan cek nilai Anda di <a href="/final" style="text-decoration:underline">sini</a></h3>
             </div>
         </div>
