@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Member;
 use App\Models\Mentor;
 use App\Models\Division;
@@ -10,6 +11,8 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PhpOffice\PhpSpreadsheet\IOFactory;
+use Mail;
+use App\Mail\NotifyMail;
 
 class MemberController extends Controller
 {
@@ -190,6 +193,15 @@ class MemberController extends Controller
             'submission_status' => 'Ditolak'
         ]);
 
+        $d = Member::where('id', $id->id)->first();
+
+        $mailData = [
+            'body' => 'Mohon maaf, pengajuan PKL Anda di PT. Len Industri (Persero) telah <strong>Ditolak</strong>. Dikarenakan tidak sesuai persyaratan Kami.',
+            'user' => $d->name
+        ];
+
+        Mail::to($d->email)->send(new NotifyMail($mailData));
+
         return back()->with('success', 'Pengajuan berhasil ditolak');
     }
 
@@ -209,6 +221,15 @@ class MemberController extends Controller
             'end'=>$request->end,
             'submission_status' => 'Diterima',
         ]);
+
+        $d = Member::where('id', $id->id)->first();
+
+        $mailData = [
+            'body' => 'Selamat, pengajuan PKL Anda di PT. Len Industri (Persero) telah <strong>Diterima</strong>. Silahkan lakukan registrasi akun menggunakan email yang telah Anda daftarkan <a href="http://127.0.0.1:8000/regis" target="_blank">Disini</a>.',
+            'user' => $d->name
+        ];
+
+        Mail::to($d->email)->send(new NotifyMail($mailData));
 
         return back()->with('success', 'Peserta berhasil di terima');
     }
@@ -272,21 +293,27 @@ class MemberController extends Controller
             $fileName_letter = 'SP' . '_' . $request->name .date("YmdHis")  .  "." . $file->getClientOriginalExtension();
             $file->move($dest, $fileName_letter);
         }
-        Member::create([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'phone'=>$request->phone,
-            'univ'=>$request->univ,
-            'description'=>$request->description,
-            'start'=>$request->start,
-            'end'=>$request->end,
-            'cv'=>$fileName_cv,
-            'transcripts'=>$fileName_transcript,
-            'internship_letter'=>$fileName_letter,
-            'submission_status'=>'Pending',
-            'is_aktif'=>0,
-        ]);
-        return back()->with('success','Pengajuan Berhasil Dikirim');
+
+        // $checkUser = User::where('email', $request->email)->count();
+        // if ($checkUser > 0) {
+        //     return back()->with('error', 'Email already Registered');
+        // } else {
+            Member::create([
+                'name'=>$request->name,
+                'email'=>$request->email,
+                'phone'=>$request->phone,
+                'univ'=>$request->univ,
+                'description'=>$request->description,
+                'start'=>$request->start,
+                'end'=>$request->end,
+                'cv'=>$fileName_cv,
+                'transcripts'=>$fileName_transcript,
+                'internship_letter'=>$fileName_letter,
+                'submission_status'=>'Pending',
+                'is_aktif'=>0,
+            ]);   
+        // }
+        return back()->with('success', 'Pengajuan Berhasil Dikirim');
     }
 
     public function export(Request $request){

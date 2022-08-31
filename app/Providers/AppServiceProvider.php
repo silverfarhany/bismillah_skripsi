@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
-use App\Models\FormEvaluation;
+use App\Models\Certificate;
 use Exception;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,9 +30,9 @@ class AppServiceProvider extends ServiceProvider
 
             view()->composer(['peserta.*'], function ($view)
             {
-                $cek = FormEvaluation::where('member_id', \Session::get('id'))->get();
+                $cek = Certificate::where('member_id', \Session::get('id'))->get();
                 
-                $view->with('cek', $cek);    
+                $view->with('cek', $cek);
             });
 
         } catch (Exception $e) {
