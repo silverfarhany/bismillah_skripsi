@@ -82,20 +82,7 @@ class TaskController extends Controller
 
         $id->update($request->all());
 
-        return redirect('/alldata')->with('success', 'Data Tugas berhasil diupdate');
-        // $updateTask = [                      
-        // 'members_id' => $members_id, 
-        //     'mentors_id' => $mentors_id,           
-        //     'name' => $tasks_name,
-        //     'deadline' => $deadline, 
-        //     'description' => $description,
-        //     'status' => $status,               
-        // ];
-
-        //     dd($task);
-        // Task::where('id',$request->id_task)->update($task);       
-        // return redirect('/readalltask');
-        // }
+        return redirect('/alldata')->with('success', 'Data Tugas berhasil diupdate');      
     }
 
     public function read()

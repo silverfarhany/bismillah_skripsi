@@ -59,22 +59,4 @@ class DivisionController extends Controller
         $division->update($input);
         return redirect('/createdivision');
     }
-
-    // public function showTask(Request $request)
-    // {
-    //     if(Session::get('role') == 2){
-    //         $task = Task::all();
-    //         $member = Member::select('id','name')->get();
-    //         $mentor = Mentor::select('id','name')->get();
-    //         return view('showTask',[
-    //             'tasks' => $task,
-    //             'members' => $member,
-    //             'mentors' => $mentor
-    //         ]);
-    //     }elseif(Session::get('role') == 1){
-    //         return redirect('/homepeserta');
-    //     }else{
-    //         return view('login');
-    //     }
-    // }
 }
