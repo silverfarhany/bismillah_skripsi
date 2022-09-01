@@ -53,6 +53,12 @@ class MentorController extends Controller
     {
         $mentor = Mentor::find($id);
         $user = User::where('email', $mentor->email)->first();
+        if ($mentor != null) {
+            $mentor->delete();
+            return redirect('/creatementor')->with(['message'=> 'Mentor Successfully deleted!!']);
+        }
+
+        return redirect('/creatementor')->with(['message'=> 'ID Pembimbing tidak ditemukan!!']);
         $user->delete();
         $mentor->delete();
         return redirect('/creatementor');
