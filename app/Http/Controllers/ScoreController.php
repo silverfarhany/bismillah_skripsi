@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\User;
 use App\Models\Point;
 use App\Models\Member;
 use App\Models\Mentor;
@@ -87,50 +88,71 @@ class ScoreController extends Controller
 
     public function delete($id)
     {
-        Point::find($id)->delete();
-        return redirect('/readscore');
+        FormEvaluation::find($id)->delete();
+        return back()->with('success','Data Nilai Berhasil Dihapus');
     }
 
     public function edit($id) {
-        $points = Point::findOrFail($id);  
-        $mentors = Mentor::select('id','name')->get();
+
+        $data['parameter_A'] = MemberEvaluation::join('evaluation_parameters', 'evaluation_parameters.id', '=', 'member_evaluations.parameter_id')
+                            ->where('evaluation_parameters.category', 'A')->where('member_evaluations.form_id', $id)
+                            ->select('member_evaluations.form_id', 'member_evaluations.point as nilai', 'evaluation_parameters.*')
+                            ->get();
+        $data['parameter_B'] = MemberEvaluation::join('evaluation_parameters', 'evaluation_parameters.id', '=', 'member_evaluations.parameter_id')
+                            ->where('evaluation_parameters.category', 'B')->where('member_evaluations.form_id', $id)
+                            ->select('member_evaluations.form_id', 'member_evaluations.point as nilai', 'evaluation_parameters.*')
+                            ->get();
+        $data['parameter_C'] = MemberEvaluation::join('evaluation_parameters', 'evaluation_parameters.id', '=', 'member_evaluations.parameter_id')
+                            ->where('evaluation_parameters.category', 'C')->where('member_evaluations.form_id', $id)
+                            ->select('member_evaluations.form_id', 'member_evaluations.point as nilai', 'evaluation_parameters.*')
+                            ->get();
+
+        $scores = FormEvaluation::findOrFail($id);
         $members = Member::select('id','name')->get();
-        $task = Task::select('id','name')->get();
-        // dd($points);              
+        
         return view('score.edit',[                        
             'members' => $members,
-            'mentors' => $mentors,
-            'task' => $task,
-            'points' => $points,
-        ]);
+            'scores' => $scores,
+        ])->with($data);
     }
 
     public function update(Request $request, Point $point)
     {
-        // dd($request);
-        $request->validate([          
-            'mentors_id'=>'required',
-            'members_id'=>'required',
-            'tasks_id' => 'required',
-            'point' => 'required',                                      
-        ]);      
+        $request->validate([
+            'point' => 'required',                                   
+        ]);
+        $form = FormEvaluation::findOrFail($request->id);
+        $subPoint = 0;
+        $jumlahParameter = EvaluationParameter::count();
+        $parameters = EvaluationParameter::all();
+        foreach($parameters as $parameter){
+            $updateScore = MemberEvaluation::where('parameter_id', $parameter->id)->where('form_id', $request->id)->update([    
+                'parameter_id' => $parameter->id,
+                'form_id' => $form->id,            
+                'point' => $request->point[$parameter->id],            
+            ]);
+            $subPoint += $request->point[$parameter->id];
+        }
+        $average = round($subPoint/$jumlahParameter,2);
+        $predikat = null;
+        if($average >=90){
+            $predikat = "Memuaskan";
+        }
+        else if($average >= 80 && $average <= 89){
+            $predikat = "Baik";
+        }
+        else if($average >= 70 && $average <= 79){
+            $predikat = "Cukup";
+        }else{
+            $predikat = "Kurang";
+        }
+       
+        $form->update([
+            'average'=>$average,
+            'predicate'=>$predikat
+        ]);
 
-        $members_id = $request->members_id;
-        $mentors_id = $request->mentors_id;
-        $tasks_id = $request->tasks_id;
-        $point = $request->point;
-        
-        $updateScore = [           
-            'mentors_id' => $mentors_id,
-            'members_id' => $members_id,            
-            'tasks_id' => $tasks_id,
-            'point' => $point,            
-        ];
-        // dd($updateScore);
-        // dd($request);
-        Point::where('id',$request->id_point)->update($updateScore);   
-        // dd(Point::where('id',$request->id));     
-        return redirect('/readscore');
+        return redirect('/readscore')->with('success','Data Nilai Berhasil Diubah');
 
     }
 

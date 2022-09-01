@@ -1,6 +1,8 @@
 @extends('pembimbing.main')
 @section('content')
 
+@include('notification')
+
 <div class="card card-custom">
     <div class="card-header">
         <h3 class="card-title">
@@ -34,7 +36,17 @@
                     <td>{{$form->average}}</td>
                     <td>{{$form->predicate}}</td>
                     <td>{{date('d F Y',strtotime($form->date))}}</td>
-                    <td><a href="javascript:void(0)" data-id="{{$form->id}}" class="btnDetailForm">Lihat Detail Nilai</a></td>
+                    <td>
+                        <a href="javascript:void(0)" data-id="{{$form->id}}" class="btn btn-sm btn-primary font-weight-bold mr-2 btnDetailForm">
+                            <i class="far fa-eye"></i> Detail Nilai
+                        </a>
+                        <a href="editScore/{{ $form->id }}" class="btn btn-sm btn-success font-weight-bold mr-2 btnDataTugas">
+                            <i class="fas fa-edit"></i> Edit Nilai
+                        </a>
+                        <a href="#" class="btn btn-sm btn-danger font-weight-bold mr-2 btnDelete" data-id="{{$form->id}}">
+                            <i class="fas fa-trash"></i> Hapus Nilai
+                        </a>
+                    </td>
                  
                 </tr>
                 @endforeach
@@ -110,6 +122,32 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="konfirmasiDelete" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Konfirmasi Delete</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <form id="formDelete" method="post">
+                @csrf
+                @method('DELETE')
+            <div class="card-body d-flex align-items-center justify-content-between pt-7 flex-wrap">
+                <p>Anda yakin akan menghapus nilai peserta ini?</p>
+            </div>
+            <!--end::Body-->
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary font-weight-bold">Ya</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 <!--end::Card-->
 @endsection
 
@@ -140,5 +178,14 @@
             $("#predikat").empty();
             $("#rata-rata").empty();
         })
+
+        $('.btnDelete').on('click',function(){
+            $('#formDelete').prop('action','/deleteScore/'+$(this).attr('data-id'));
+            $('#konfirmasiDelete').modal('show');
+        }); 
+
+        $('#konfirmasiDelete').on('hidden.bs.modal',function(){
+            $('#formDelete').removeAttr('action');
+        });
     </script>
 @endsection
