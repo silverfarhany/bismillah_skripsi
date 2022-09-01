@@ -95,7 +95,7 @@ Route::group(['middleware' => ['mentor']], function () {
     Route::get('/createscore', [ScoreController::class, 'index'])->name('index');
     Route::post('/submitscore', [ScoreController::class, 'CreateScore'])->name('createscore');
     Route::get('/readscore', [ScoreController::class, 'read'])->name('readscore');
-    Route::get('/deleteScore/{id}', [ScoreController::class, 'delete'])->name('deleteScore');
+    Route::delete('/deleteScore/{id}', [ScoreController::class, 'delete'])->name('deleteScore');
     Route::get('/editScore/{id}', [ScoreController::class, 'edit']);
     Route::post('/editScore', [ScoreController::class, 'update'])->name('editScore');
     Route::get('/score/{form}/detail', [ScoreController::class, 'getScorebyForm']);
