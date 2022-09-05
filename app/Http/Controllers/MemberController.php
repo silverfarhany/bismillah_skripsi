@@ -40,7 +40,7 @@ class MemberController extends Controller
         }else{
             $members = Member::where('is_aktif', '1')->where('mentors_id', Mentor::where('email', auth()->user()->email)->first()->id)->get();
         }
-        
+
         return view('peserta.alldata', compact('members'));
     }
 
@@ -257,7 +257,7 @@ class MemberController extends Controller
     }
 
     public function submitKP(Request $request){
-     
+
         $request->validate([
             'name'=>'required',
             'email'=>'required',
@@ -294,10 +294,10 @@ class MemberController extends Controller
             $file->move($dest, $fileName_letter);
         }
 
-        // $checkUser = User::where('email', $request->email)->count();
-        // if ($checkUser > 0) {
-        //     return back()->with('error', 'Email already Registered');
-        // } else {
+        $checkUser = Member::where('email', $request->email)->count();
+        if ($checkUser > 0) {
+            return back()->with('error', 'Email Sudah Digunakan, Silahkan Coba Email Baru!');
+        } else {
             Member::create([
                 'name'=>$request->name,
                 'email'=>$request->email,
@@ -311,10 +311,11 @@ class MemberController extends Controller
                 'internship_letter'=>$fileName_letter,
                 'submission_status'=>'Pending',
                 'is_aktif'=>0,
-            ]);   
-        // }
+            ]);
+        }
         return back()->with('success', 'Pengajuan Berhasil Dikirim');
     }
+
 
     public function export(Request $request){
         $request->validate([
@@ -339,7 +340,7 @@ class MemberController extends Controller
                 $members = Member::with('getDivision')->where('is_aktif',1)
                 ->where('end','>=',$request->start)->where('end','<=',$request->end)
                 ->get();
-                // $members = Member::with('getDivision')->where('is_aktif',1)->get();    
+                // $members = Member::with('getDivision')->where('is_aktif',1)->get();
             }
         }else{
             if($request->status == 1)
@@ -358,7 +359,7 @@ class MemberController extends Controller
                 // $members = Member::with('getDivision')->where('is_aktif',1)->where('mentors_id',session()->get('id'))->get();
             }
         }
-       
+
         $row = 2;
         $no = 1;
         foreach ($members as $member) {
@@ -374,7 +375,7 @@ class MemberController extends Controller
             $no++;
         }
         $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
-        ob_end_clean(); 
+        ob_end_clean();
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         if($request->status == 1)
             {
@@ -382,7 +383,7 @@ class MemberController extends Controller
             }
             else
             {
-                header("Content-Disposition: attachment; filename=Reports Data Peserta Selesai PKL" . date('Y-m-d',strtotime($request->start)) . '_to_' . date('Y-m-d',strtotime($request->end)) . ".xlsx");   
+                header("Content-Disposition: attachment; filename=Reports Data Peserta Selesai PKL" . date('Y-m-d',strtotime($request->start)) . '_to_' . date('Y-m-d',strtotime($request->end)) . ".xlsx");
             }
         $writer->save('php://output');
     }
