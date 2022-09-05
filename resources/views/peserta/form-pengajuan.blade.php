@@ -35,7 +35,7 @@ License: You must have a valid license purchased only from themes.getbootstrap.c
     </script>
     <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
-    <title>KoreanCourse | Login </title>
+    <title>Pengajuan PKL </title>
     <meta name="description" content="Login page example" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <!--begin::Fonts-->
